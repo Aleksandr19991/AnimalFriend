@@ -1,0 +1,23 @@
+﻿
+.body-href{
+    background-color: white;
+}
+
+.p-style {
+    border-top: 2px solid dimgray;
+    padding-left: 10px;
+}
+
+.h-style {
+    padding-left: 10px;
+}
+
+a {
+    color: inherit;
+}
+
+.container-home {
+    display: flex;
+    justify-content: space-between;
+}
+

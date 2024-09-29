@@ -1,9 +1,42 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: dimgray;
+}
+
+.main-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.container-main-title {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.header-center-button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.footer-container {
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+}
+
+.footer-margin-left {
+    margin-left: 3%;
 }
 
 a, .btn-link {
     color: #006bb7;
+    text-decoration: none;
 }
 
 .btn-primary {
