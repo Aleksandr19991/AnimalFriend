@@ -3,6 +3,10 @@ html, body {
     background-color: dimgray;
 }
 
+.overflow-main{
+    overflow: hidden;
+}
+
 .main-title {
     font-size: 50px;
     font-weight: bold;
