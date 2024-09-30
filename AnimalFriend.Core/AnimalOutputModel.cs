@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AnimalFriend.Core
+﻿namespace AnimalFriend.Core
 {
-    internal class AnimalShortOutputModel
+    public class AnimalOutputModel
     {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string AnimalSpecies { get; set; }
+
+        public int Age { get; set; }
+
+        public string Description { get; set; }
     }
 }
