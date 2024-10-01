@@ -1,4 +1,4 @@
-﻿using AnimalFriend.Core;
+﻿using AnimalFriend.Core.OutputModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace AnimalFriend.BLL
 {
     public class AnimalManager
     {
-        public List<AnimalOutputModel> GetAllAnimalInfo()
+        public List<AnimalOutputModel> GetAllAnimals()
         {
             //return new List<AnimalOutputModel>();
             return new List<AnimalOutputModel>
@@ -57,6 +57,32 @@ namespace AnimalFriend.BLL
                     Description="Гав"
                 },
             };
+        }
+
+        public AnimalOutputModel GeAnimalById(int id)
+        {
+            if (id % 2 == 0)
+            {
+                return new AnimalOutputModel()
+                {
+                    Id = id,
+                    Name = "Мурка",
+                    AnimalSpecies = "Котэ",
+                    Age = 8,
+                    Description = "Мяу"
+                };
+            }
+            else
+            {
+                return new AnimalOutputModel()
+                {
+                    Id = 5,
+                    Name = "Вольт",
+                    AnimalSpecies = "Собакен",
+                    Age = 10,
+                    Description = "Гав"
+                };
+            }
         }
     }
 }
