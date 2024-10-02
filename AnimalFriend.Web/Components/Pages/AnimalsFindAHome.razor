@@ -1,0 +1,24 @@
+﻿@page "/animalsFindAHome"
+@rendermode RenderMode.InteractiveServer
+
+
+<h3>AnimalsFindAHome</h3>
+<div style="display:flex; justify-content: flex-start; flex-wrap:wrap;">
+    @foreach (var a in _animals)
+    {
+        <AnimalCard Animal="@a" />
+    }
+</div>
+
+
+@code {
+    public List<AnimalOutputModel> _animals;
+
+    private AnimalManager _animalManager;
+
+    public AnimalsFindAHome()
+    {
+        _animalManager = new AnimalManager();
+        _animals = _animalManager.GetAllAnimals();
+    }
+}
