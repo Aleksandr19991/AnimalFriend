@@ -1,7 +1,11 @@
 @rendermode RenderMode.InteractiveServer
 
-<header class="container-main-title">
-    <a href="/" class="main-title">Animal friend</a>
+<header class="container-header">
+    
+    <a href="/" class="main-title">Animal friend
+        <img class="smile-position" src="./images/smilik.png" width="50" height="50" alt="smilik">
+    </a>
+    
     <div class="header-center-button">
         <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
         <button class="btn btn-primary">sing up</button>
@@ -61,6 +65,7 @@
 
     private void Submit()
     {
+        _modalOpenClose = "modal fade";
         Console.WriteLine(ForAutorization.Email);
         Console.WriteLine(ForAutorization.Password);
     }
