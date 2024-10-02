@@ -1,6 +1,4 @@
-﻿@page "/card"
-
-<div class="card" style="width: 18rem;">
+﻿<div class="card" style="width: 18rem;">
     <img src="@Shelter.ImagePath" class="card-img-top" alt="@Shelter.NameShelter">
     <div class="card-body">
         <h5 class="card-title">@Shelter.NameShelter</h5>
@@ -12,18 +10,6 @@
 
 @code {
     [Parameter]
-
-    public ShelterCardOutputModel Shelter { get; set; }
-
-    private ShelterManager _shelterManager { get; set; }
-
-    public ShelterCard()
-    {
-        _shelterManager = new ShelterManager();
-        Shelter = _shelterManager.GetAllShelter();
-    }
-
     
-
-
+    public ShelterCardOutputModel Shelter { get; set; }
 }
