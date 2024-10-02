@@ -1,0 +1,18 @@
+﻿@page "/animal/{Id:int}"
+@rendermode RenderMode.InteractiveServer
+
+<h3 class="display-3">@_animal.Name</h3>
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private AnimalManager _animalManager;
+    private AnimalOutputModel _animal;
+
+    public Animal()
+    {
+        _animalManager = new AnimalManager();
+    }
+}

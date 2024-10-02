@@ -1,0 +1,28 @@
+﻿@page "/allshelter"
+@rendermode RenderMode.InteractiveServer
+
+<h3 class=" coordinate-position">AllShelters</h3>
+
+<div class="conteiner-for-allshelterscard">
+    @foreach (var item in Shelters)
+    {
+        <ShelterCard Shelter="@item" />
+    }
+</div>
+
+@code {
+    
+    public List<ShelterCardOutputModel> Shelters { get; set; }
+
+    private ShelterManager _shelterManager { get; set; }
+
+    public AllShelters()
+    {
+        _shelterManager = new ShelterManager();
+        Shelters = _shelterManager.GetAllShelter();
+    }
+
+
+
+
+}
