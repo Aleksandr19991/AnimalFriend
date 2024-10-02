@@ -1,0 +1,68 @@
+@rendermode RenderMode.InteractiveServer
+
+<header class="container-main-title">
+    <a href="/" class="main-title">Animal friend</a>
+    <div class="header-center-button">
+        <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
+        <button class="btn btn-primary">sing up</button>
+    </div>
+</header>
+
+<EditForm Model="@ForAutorization" OnSubmit="Submit" class=@_modalOpenClose id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button @onclick=CloseModalSingIn type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Email:</label>
+                        <InputText @bind-Value="ForAutorization.Email" class="form-control" id="recipient-name" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Password:</label>
+                        <InputText @bind-Value="ForAutorization.Password" class="form-control" id="recipient-name" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button @onclick=CloseModalSingIn type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+    private string _modalOpenClose { get; set; } = "modal fade";
+
+    private RegistrationInputModel ForRegistration { get; set; }
+
+    private AutoriszationInputModel ForAutorization { get; set; }
+
+    private void CloseModalSingIn()
+    {
+        _modalOpenClose = "modal fade";
+    }
+
+    private void OpenModalSingIn()
+    {
+        Console.WriteLine("here");
+        _modalOpenClose = "modal-open";
+    }
+
+    public Header()
+    {
+        ForAutorization = new();
+    }
+
+    private void Submit()
+    {
+        Console.WriteLine(ForAutorization.Email);
+        Console.WriteLine(ForAutorization.Password);
+    }
+
+}

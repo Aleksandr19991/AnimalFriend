@@ -1,6 +1,9 @@
 ﻿@page "/"
+@rendermode RenderMode.InteractiveServer
 
 <PageTitle>Home</PageTitle>
+
+
 <div class="container-home">
     <div>
         <div class="body-href">
@@ -26,9 +29,26 @@
     </div>
     
         <img src="images/dog.jpg" alt="dog" width="40%" />
-    
-        
 </div>
+
+
+@code {
+    [Parameter]
+
+    public string ModalOpenClose { get; set; } 
+
+    private void CloseModalSingIn()
+    {
+        ModalOpenClose = "modal fade";
+    }
+
+    private void OpenModalSingIn()
+    {
+        Console.WriteLine("here");
+        ModalOpenClose = "modal-open";
+    }
+
+}
 
 
 

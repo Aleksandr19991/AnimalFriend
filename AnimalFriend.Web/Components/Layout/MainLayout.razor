@@ -5,15 +5,17 @@
         <NavMenu />
     </div>
 
-    <main class="container-main">
-        <header  class="container-main-title">
+    <main class="">
+        <Header />
+
+        @* <header  class="container-main-title">
             <a href="/" class="main-title">Animal friend</a>
             <div class="header-center-button">
-                <a href="/" class="btn btn-primary">sing in</a>
-                <a href="/" class="btn btn-primary">sing up</a>
+                <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
+                <button class="btn btn-primary">sing up</button>
             </div>
-        </header>
-
+        </header> *@
+        
         <article  class="content px-4">
             @Body
         </article>
@@ -33,3 +35,8 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+
+
+
+

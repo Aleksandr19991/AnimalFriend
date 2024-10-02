@@ -7,6 +7,12 @@ html, body {
     overflow: hidden;
 }
 
+.modal-open {
+    position: absolute;
+    top: 150px;
+    left: 700px;
+}
+
 .main-title {
     font-size: 50px;
     font-weight: bold;
