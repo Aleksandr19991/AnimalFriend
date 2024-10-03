@@ -1,15 +1,10 @@
-﻿<div style="background-color: lightgreen; width: 350px; margin:10px; padding:10px; border:5px double forestgreen">
-    <h3>@Animal.Name</h3>
-    <p>@Animal.Description</p>
-    <p>@Animal.Age</p>
-
-  <div class="nav-item px-3">
-     <NavLink class="nav-link" href=@($"animal/{Animal.Id}") Match="NavLinkMatch.All">
-            <button>Посмотреть Животное</button>
-     </NavLink>
+﻿<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">@Animal.Name</h5>
+        <a href="@($"animal/{Animal.Id}") " class="btn btn-primary">Open</a>
   </div>
 </div>
-
 
 @code {
     [Parameter]

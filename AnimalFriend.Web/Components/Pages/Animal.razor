@@ -1,8 +1,14 @@
 ﻿@page "/animal/{Id:int}"
 @rendermode RenderMode.InteractiveServer
 
+<div style="background-color: lightgreen; width: 350px; margin:10px; padding:10px; border:5px double forestgreen">
 <h3 class="display-3">@_animal.Name</h3>
-
+<p>@_animal.Description</p>
+<p>@_animal.AnimalSpecies</p>
+<p>@_animal.Age</p>
+<p>@_animal.NameShelter</p>
+<p>@_animal.CallShelter</p>
+</div>
 
 @code {
     [Parameter]
@@ -14,5 +20,10 @@
     public Animal()
     {
         _animalManager = new AnimalManager();
+    }
+    
+    protected override void OnInitialized()
+    {
+        _animal = _animalManager.GeAnimalById(Id);
     }
 }
