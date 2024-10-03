@@ -1,9 +1,9 @@
 ﻿@page "/animalsFindAHome"
 @rendermode RenderMode.InteractiveServer
 
+<h3 class=" coordinate-position">AnimalsFindAHome</h3>
 
-<h3>AnimalsFindAHome</h3>
-<div style="display:flex; justify-content: flex-start; flex-wrap:wrap;">
+<div class="conteiner-for-animalsFindAHome">
     @foreach (var a in _animals)
     {
         <AnimalCard Animal="@a" />
