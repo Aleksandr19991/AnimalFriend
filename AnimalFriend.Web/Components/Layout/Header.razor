@@ -12,7 +12,9 @@
     </div>
 </header>
 
-<EditForm Model="@ForAutorization" OnSubmit="Submit" class=@_modalOpenClose id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<ModalWindow ClassName="@_modalOpenClose" OnClickCallback="@Increment" />
+
+@* <EditForm Model="@ForAutorization" OnSubmit="Submit" class=@_modalOpenClose id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -37,20 +39,11 @@
             </div>
         </div>
     </div>
-</EditForm>
+</EditForm> *@
 
 
 @code {
     private string _modalOpenClose { get; set; } = "modal fade";
-
-    private RegistrationInputModel ForRegistration { get; set; }
-
-    private AutoriszationInputModel ForAutorization { get; set; }
-
-    private void CloseModalSingIn()
-    {
-        _modalOpenClose = "modal fade";
-    }
 
     private void OpenModalSingIn()
     {
@@ -58,16 +51,11 @@
         _modalOpenClose = "modal-open";
     }
 
-    public Header()
+    void Increment()
     {
-        ForAutorization = new();
+        
     }
 
-    private void Submit()
-    {
-        _modalOpenClose = "modal fade";
-        Console.WriteLine(ForAutorization.Email);
-        Console.WriteLine(ForAutorization.Password);
-    }
+  
 
 }
