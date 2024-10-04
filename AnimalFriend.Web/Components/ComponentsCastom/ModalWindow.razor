@@ -1,0 +1,75 @@
+﻿
+
+<EditForm EditContext="editContext" class=@ClassName id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <DataAnnotationsValidator />
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button @onclick="CloseModalSingIn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Email:</label>
+                        <InputText @bind-Value="ForAutorization.Email" class="form-control" id="recipient-name" />
+                        <ValidationMessage For="@(() => ForAutorization.Email)" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Password:</label>
+                        <InputText @bind-Value="ForAutorization.Password" class="form-control" id="recipient-name" />
+                        <ValidationMessage For="@(() => ForAutorization.Password)" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button @onclick=CloseModalSingIn type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code{
+    [Parameter]
+
+    public string ClassName { get; set; } = "modal fade";
+
+    [Parameter]
+    public EventCallback OnClickCallback { get; set; }
+
+    // private RegistrationInputModel ForRegistration { get; set; }
+
+    private AutoriszationInputModel ForAutorization { get; set; }
+
+    private void CloseModalSingIn()
+    {
+        ClassName = "modal fade";
+    }
+
+    public ModalWindow()
+    {
+        ForAutorization = new();
+    }
+
+    EditContext? editContext;
+    protected override void OnInitialized()
+    {
+        editContext = new(ForAutorization);
+    }
+
+    private void Submit()
+    {
+        if (editContext != null && editContext.Validate())
+        {
+            ClassName = "modal fade";
+            Console.WriteLine(ForAutorization.Email);
+            Console.WriteLine(ForAutorization.Password);
+        }
+    }
+
+
+
+
+
+}   
