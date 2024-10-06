@@ -6,6 +6,8 @@
 
         public string Name { get; set; }
 
+        public string ImagePath { get; set; }
+
         public string AnimalSpecies { get; set; }
 
         public string Age { get; set; }
