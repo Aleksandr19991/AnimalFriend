@@ -1,0 +1,26 @@
+﻿@rendermode RenderMode.InteractiveServer
+
+<header class="container-header">
+
+    <a href="/" class="main-title">
+        Animal friend
+        <img class="smile-position" src="./images/smilik.png" width="50" height="50" alt="smilik">
+    </a>
+
+    <div class="header-center-button">
+        <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
+        <button class="btn btn-primary">sing up</button>
+    </div>
+</header>
+
+<AutorizeModalWindow @bind-ClassName="@_modalOpenClose" />
+
+@code {
+    private string _modalOpenClose { get; set; } = "modal fade";
+
+    private void OpenModalSingIn()
+    {
+        Console.WriteLine("here");
+        _modalOpenClose = "modal-open";
+    }
+}

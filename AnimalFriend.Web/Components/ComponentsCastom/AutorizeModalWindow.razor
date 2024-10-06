@@ -1,5 +1,4 @@
 ﻿
-
 <EditForm EditContext="editContext" class=@ClassName id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -34,20 +33,19 @@
     [Parameter]
 
     public string ClassName { get; set; } = "modal fade";
-
+    
     [Parameter]
-    public EventCallback OnClickCallback { get; set; }
+    public EventCallback<string> ClassNameChanged { get; set; }
 
-    // private RegistrationInputModel ForRegistration { get; set; }
+    private AutorizationInputModel ForAutorization { get; set; }
 
-    private AutoriszationInputModel ForAutorization { get; set; }
-
-    private void CloseModalSingIn()
+    private async Task CloseModalSingIn()
     {
         ClassName = "modal fade";
+        await ClassNameChanged.InvokeAsync(ClassName);
     }
 
-    public ModalWindow()
+    public AutorizeModalWindow()
     {
         ForAutorization = new();
     }
@@ -67,9 +65,4 @@
             Console.WriteLine(ForAutorization.Password);
         }
     }
-
-
-
-
-
 }   
