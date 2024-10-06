@@ -1,0 +1,7 @@
+﻿
+.modal-open {
+    position: absolute;
+    z-index: 3;
+    top: 150px;
+    left: 700px;
+}
