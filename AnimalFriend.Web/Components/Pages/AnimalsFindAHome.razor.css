@@ -1,0 +1,11 @@
+﻿.color-h3{
+    background-color: lightcoral; 
+    color: blue;
+}
+
+.conteiner-for-animals{
+    display: flex;
+    gap: 30px;
+
+
+}
