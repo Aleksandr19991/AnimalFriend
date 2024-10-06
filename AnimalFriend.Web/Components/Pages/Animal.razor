@@ -1,13 +1,22 @@
 ﻿@page "/animal/{Id:int}"
 @rendermode RenderMode.InteractiveServer
 
-<div style="background-color: lightgreen; width: 350px; margin:10px; padding:10px; border:5px double forestgreen">
-<h3 class="display-3">@_animal.Name</h3>
-<p>@_animal.Description</p>
-<p>@_animal.AnimalSpecies</p>
-<p>@_animal.Age</p>
-<p>@_animal.NameShelter</p>
-<p>@_animal.CallShelter</p>
+<div class="card mb-3" style="max-width: 1000px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="@_animal.ImagePath" class="img-fluid rounded-start" alt="@_animal.Name">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@_animal.Name</h5>
+                <p>@_animal.Description</p>
+                <p>@_animal.AnimalSpecies</p>
+                <p>@_animal.Age</p>
+                <p>@_animal.NameShelter</p>
+                <p>@_animal.CallShelter</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 @code {

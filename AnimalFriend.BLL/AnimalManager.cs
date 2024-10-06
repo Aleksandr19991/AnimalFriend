@@ -18,6 +18,7 @@ namespace AnimalFriend.BLL
                 {
                     Id=1,
                     Name="Мухтар",
+                    ImagePath = "images/dogmuhtar.jpg",
                     AnimalSpecies="Собакен",
                     Age="4 года",
                     Description="Гав",
@@ -28,6 +29,7 @@ namespace AnimalFriend.BLL
                 {
                     Id=2,
                     Name="Барсик",
+                    ImagePath = "images/catbarsik.jpg",
                     AnimalSpecies="Котэ",
                     Age="3 года",
                     Description="Мяу",
@@ -38,6 +40,7 @@ namespace AnimalFriend.BLL
                 {
                     Id=3,
                     Name="Беляш",
+                    ImagePath = "images/dogbelaysh.jpg",
                     AnimalSpecies="Собакен",
                     Age="5 лет",
                     Description="Гав",
@@ -49,6 +52,7 @@ namespace AnimalFriend.BLL
                 {
                     Id=4,
                     Name="Мурка",
+                    ImagePath = "images/catmurka.jpg",
                     AnimalSpecies="Котэ",
                     Age="7 лет",
                     Description="Мяу",
@@ -60,6 +64,7 @@ namespace AnimalFriend.BLL
                 {
                     Id=5,
                     Name="Вольт",
+                    ImagePath = "images/dogvolt.jpg",
                     AnimalSpecies="Собакен",
                     Age="10 лет",
                     Description="Гав",
@@ -77,6 +82,7 @@ namespace AnimalFriend.BLL
                 {
                     Id = id,
                     Name = "Мухтар",
+                    ImagePath = "images/dogmuhtar.jpg",
                     AnimalSpecies = "Собакен",
                     Age = "4 года",
                     Description = "Гав",
@@ -90,6 +96,7 @@ namespace AnimalFriend.BLL
                 {
                     Id = id,
                     Name = "Барсик",
+                    ImagePath = "images/catbarsik.jpg",
                     AnimalSpecies = "Котэ",
                     Age = "3 года",
                     Description = "Мяу",
@@ -103,6 +110,7 @@ namespace AnimalFriend.BLL
                 {
                     Id = id,
                     Name = "Беляш",
+                    ImagePath = "images/dogbelaysh.jpg",
                     AnimalSpecies = "Собакен",
                     Age = "5 лет",
                     Description = "Гав",
@@ -116,6 +124,7 @@ namespace AnimalFriend.BLL
                 {
                     Id = id,
                     Name = "Мурка",
+                    ImagePath = "images/catmurka.jpg",
                     AnimalSpecies = "Котэ",
                     Age = "7 лет",
                     Description = "Мяу",
@@ -129,6 +138,7 @@ namespace AnimalFriend.BLL
                 {
                     Id = id,
                     Name = "Вольт",
+                    ImagePath = "images/dogvolt.jpg",
                     AnimalSpecies = "Собакен",
                     Age = "10 лет",
                     Description = "Гав",
