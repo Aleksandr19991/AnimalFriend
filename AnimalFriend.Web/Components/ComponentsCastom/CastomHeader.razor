@@ -8,16 +8,15 @@
     </a>
 
     <div class="header-center-button">
-        <AuthorizeView Roles="Client">
-            <Authorized>
-                <a href="/logout" class="btn btn-primary">logout</a>
-            </Authorized>
-            <NotAuthorized>
-                <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
-                <a href="/login" class="btn btn-primary">sing up</a>
-            </NotAuthorized>
-        </AuthorizeView>
-        
+        @if (isRender)
+        {
+            <a href="/logout" @onclick=IsRender class="btn btn-primary">logout</a>
+        }
+        else
+        {
+            <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
+            <a href="/login" class="btn btn-primary">sing up</a>
+        }
     </div>
 </header>
 
@@ -28,7 +27,31 @@
 
     private void OpenModalSingIn()
     {
-        Console.WriteLine("here");
         _modalOpenClose = "modal-open";
+    }
+
+    [CascadingParameter]
+    public Task<AuthenticationState> State { get; set; }
+
+    //private List<Claim> claims = new List<Claim>();
+
+    bool isRender = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        var authState = await State;
+        var user = authState.User;
+
+        if (user.Identity is not null && user.Identity.IsAuthenticated)
+        {
+            var yes = user.FindFirst("isRender").Value;
+            if (yes == "yes") isRender = true;
+        }
+    }
+    public void IsRender()
+    {
+        isRender = false;
     }
 }
