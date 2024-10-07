@@ -31,6 +31,17 @@
         <img src="images/dog.jpg" alt="dog" width="40%" />
 </div>
 
+<AuthorizeView Roles="Client">
+    <Authorized>
+        <h1>Я тебя знаю!</h1>
+    </Authorized>
+    <NotAuthorized>
+        <h1>Я тебя НЕ знаю!</h1>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+
 
 @code {
     [Parameter]

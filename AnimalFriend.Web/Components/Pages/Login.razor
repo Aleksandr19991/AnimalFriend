@@ -1,11 +1,14 @@
-﻿
-<EditForm EditContext="editContext" OnSubmit="Submit" class=@ClassName id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+﻿@page "/login"
+
+@inject NavigationManager navManager
+
+<EditForm EditContext="editContext" OnSubmit="SingUp" FormName="ForAutorization" style="margin: 0 auto;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <DataAnnotationsValidator />
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button @onclick="CloseModalSingIn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <a href="/" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
             </div>
             <div class="modal-body">
                 <form>
@@ -22,33 +25,20 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button @onclick=CloseModalSingIn type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="/" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
                 <button type="submit" class="btn btn-primary">Send</button>
             </div>
         </div>
     </div>
 </EditForm>
 
-@code{
-    [Parameter]
+@code {
 
-    public string ClassName { get; set; } = "modal fade";
-    
-    [Parameter]
-    public EventCallback<string> ClassNameChanged { get; set; }
+    [SupplyParameterFromForm]
+    private AutorizationInputModel ForAutorization { get; set; } = new();
 
-    private AutorizationInputModel ForAutorization { get; set; }
-
-    private async Task CloseModalSingIn()
-    {
-        ClassName = "modal fade";
-        await ClassNameChanged.InvokeAsync(ClassName);
-    }
-
-    public AutorizeModalWindow()
-    {
-        ForAutorization = new();
-    }
+    [CascadingParameter]
+    public HttpContext httpContext { get; set; }
 
     EditContext? editContext;
     protected override void OnInitialized()
@@ -56,13 +46,30 @@
         editContext = new(ForAutorization);
     }
 
-    private void Submit()
+    public async Task SingUp()
     {
         if (editContext != null && editContext.Validate())
         {
-            ClassName = "modal fade";
-            Console.WriteLine(ForAutorization.Email);
-            Console.WriteLine(ForAutorization.Password);
+            int id = 100;
+            var claims = new List<Claim>()
+            {
+                new Claim("id", id.ToString()),
+                new Claim("mail", ForAutorization.Email),
+                new Claim(ClaimTypes.Role, "Client")
+            };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var pr = new ClaimsPrincipal(identity);
+            await httpContext.SignInAsync(pr);
+
+            navManager.NavigateTo("./");
         }
     }
-}   
+}
+
+@* <EditForm Model="loginModel" OnSubmit="Log" FormName="Login">
+    <InputText @bind-Value="loginModel.Login"></InputText>
+    <InputText @bind-Value="loginModel.Password"></InputText>
+    <button type="submit">LOGIN</button>
+</EditForm>
+ *@

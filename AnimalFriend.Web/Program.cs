@@ -1,4 +1,5 @@
 using AnimalFriend.Web.Components;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace AnimalFriend.Web
 {
@@ -11,6 +12,20 @@ namespace AnimalFriend.Web
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(
+                    options =>
+                    {
+                        options.Cookie.Name = "auth_token";
+                        options.LoginPath = "/login";
+                        options.Cookie.MaxAge = TimeSpan.FromDays(7);
+                    });
+
+            builder.Services.AddAuthorization();
+            builder.Services.AddCascadingAuthenticationState();
+            builder.Services.AddHttpContextAccessor();
+
 
             var app = builder.Build();
 
@@ -26,6 +41,9 @@ namespace AnimalFriend.Web
 
             app.UseStaticFiles();
             app.UseAntiforgery();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
