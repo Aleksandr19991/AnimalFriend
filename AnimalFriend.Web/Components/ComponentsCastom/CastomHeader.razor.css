@@ -27,11 +27,11 @@ a {
     margin: 0 auto;
 }
 
-.modal-open::deep {
+/*.modal-open::deep {
     position: absolute;
     z-index: 3;
     top: 150px;
     left: 700px;
-}
+}*/
 
 

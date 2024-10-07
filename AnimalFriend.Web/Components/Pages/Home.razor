@@ -1,5 +1,4 @@
 ﻿@page "/"
-@rendermode RenderMode.InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
@@ -31,7 +30,7 @@
         <img src="images/dog.jpg" alt="dog" width="40%" />
 </div>
 
-<AuthorizeView Roles="Client">
+<AuthorizeView>
     <Authorized>
         <h1>Я тебя знаю!</h1>
     </Authorized>
@@ -44,27 +43,6 @@
 
 
 @code {
-    [Parameter]
 
-    public string ModalOpenClose { get; set; } 
-
-    private void CloseModalSingIn()
-    {
-        ModalOpenClose = "modal fade";
-    }
-
-    private void OpenModalSingIn()
-    {
-        Console.WriteLine("here");
-        ModalOpenClose = "modal-open";
-    }
 }
-
-
-
-
-
-
-
-@* class="btn btn-primary" *@
 
