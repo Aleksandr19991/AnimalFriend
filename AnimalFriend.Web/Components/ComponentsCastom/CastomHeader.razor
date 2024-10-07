@@ -8,8 +8,16 @@
     </a>
 
     <div class="header-center-button">
-        <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
-        <button class="btn btn-primary">sing up</button>
+        <AuthorizeView Roles="Client">
+            <Authorized>
+                <a href="/logout" class="btn btn-primary">logout</a>
+            </Authorized>
+            <NotAuthorized>
+                <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
+                <a href="/login" class="btn btn-primary">sing up</a>
+            </NotAuthorized>
+        </AuthorizeView>
+        
     </div>
 </header>
 
