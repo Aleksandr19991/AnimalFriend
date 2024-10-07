@@ -67,16 +67,17 @@ h1:focus {
     border-color: #929292;
 }
 
-.conteiner-for-allshelterscard {
+/*.conteiner-for-allshelterscard {
     display: flex;
     gap: 20px;
-}
+}*/
 
 .coordinate-position {
     font-size: 50px;
     font-weight: bold;
     color: white;
 }
+
 
 
 
