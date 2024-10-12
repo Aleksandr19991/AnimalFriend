@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnimalFriend.Core.DTOs
+namespace AnimalFriend.BLL.Mappings
 {
-    public class ShelterDTO
+    internal class FeesMapperProfile
     {
     }
 }

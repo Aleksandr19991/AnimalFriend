@@ -18,12 +18,10 @@ namespace AnimalFriend.Core.DTOs
 
         public string? ImagePath { get; set; }
 
-        public string? AnimalSpeciesId { get; set; }
+        public AnimalTypeDTO Type {  get; set; }
 
         public string? ShelterId { get; set; }
 
         public bool? IsDeleted { get; set; }
-
-        public ShelterDTO? Shelter { get; set; }
     }
 }

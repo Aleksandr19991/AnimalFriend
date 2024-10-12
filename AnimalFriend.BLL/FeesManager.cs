@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnimalFriend.Core.DTOs
+namespace AnimalFriend.BLL
 {
-    internal class FeesDTO
+    public class FeesManager
     {
+
+
+
     }
 }
