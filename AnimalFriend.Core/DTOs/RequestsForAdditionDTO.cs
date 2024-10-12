@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
-    internal class ApplicationForAddingShelterDTO
+    internal class RequestsForAdditionDTO
     {
     }
 }

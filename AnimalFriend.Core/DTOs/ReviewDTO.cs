@@ -12,7 +12,7 @@ namespace AnimalFriend.Core.DTOs
 
         public int? ShelterId { get; set; }
 
-        public string? ReviewDescription { get; set; }
+        public string? Text { get; set; }
 
         public int? Stars { get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
-    internal class UserRoleDTO
+    public class UserRoleDTO
     {
     }
 }

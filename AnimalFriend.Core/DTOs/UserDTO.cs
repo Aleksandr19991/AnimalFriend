@@ -16,16 +16,8 @@ namespace AnimalFriend.Core.DTOs
 
         public string? Email { get; set; }
 
-        public int? RoleId { get; set; }
+        public string Password { get; set; }
 
-        public string? RoleDescription { get; set; }
-
-        public string? Password { get; set; }
-
-        public bool? IsDeleted { get; set; }
-
-        public List<AnimalDTO>? Animal { get; set; }
-
-        public List<ShelterDTO>? Shelter { get; set; }
+        public UserRoleDTO? Role { get; set; }
     }
 }
