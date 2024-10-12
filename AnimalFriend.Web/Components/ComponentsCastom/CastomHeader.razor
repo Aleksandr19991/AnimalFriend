@@ -8,16 +8,28 @@
     </a>
 
     <div class="header-center-button">
-        @if (isRender)
+        @* @if (isRender)
         {
-            <a href="/logout" @onclick=IsRender class="btn btn-primary">logout</a>
+            <a href="/logout" @onclick=IsRender class="btn btn-primary">log out</a>
         }
         else
         {
             <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
             <a href="/login" class="btn btn-primary">sing up</a>
-        }
+        } *@
+
+    <AuthorizeView Roles="Client">
+        <Authorized>
+            <a href="/logout" @onclick=IsRender class="btn btn-primary">log out</a>
+        </Authorized>
+        <NotAuthorized>
+            <button @onclick=OpenModalSingIn class="btn btn-primary">sing in</button>
+            <a href="/login" class="btn btn-primary">sing up</a>
+        </NotAuthorized>
+    </AuthorizeView>
+
     </div>
+
 </header>
 
 <AutorizeModalWindow @bind-ClassName="@_modalOpenClose" />
