@@ -8,9 +8,12 @@
     display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .position-text {
     display: flex;
+    /*align-items: flex-start;*/
     justify-content: center;
 }
