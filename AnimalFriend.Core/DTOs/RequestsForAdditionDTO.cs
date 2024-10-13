@@ -8,9 +8,9 @@ namespace AnimalFriend.Core.DTOs
 {
     public class RequestsForAdditionDto
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
-        public UserDto? User { get; set; }
+        public UserDto User { get; set; }
 
         public string? Name { get; set; }
 
@@ -18,10 +18,8 @@ namespace AnimalFriend.Core.DTOs
 
         public string? Address { get; set; }
 
-        public string Manager { get; set; }
+        public string? Description { get; set; }
 
-        public string Description { get; set; }
-
-        public string IsActive { get; set; }
+        public string? IsActive { get; set; }
     }
 }
