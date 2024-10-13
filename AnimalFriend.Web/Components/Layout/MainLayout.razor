@@ -1,31 +1,25 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page overflow-main">
+<div class="main-container">
     <div class="sidebar">
         <NavMenu />
     </div>
 
-    <main class="">
+    <main>
         <CastomHeader />
         
-        <article  class="content px-4">
+        <div class="wrapper-center-page">
             @Body
-        </article>
+        </div>
 
         <footer class="footer-container">
-            <div class="footer-margin-left">
-                <h3>our contact</h3>
-                <p>phone: 332-44-44</p>
-                <p>email: bobbic@gmail.com</p>
+            <div class="footer-content-position">
+                <h3>our contact:</h3>
+                <h3>phone: 332-44-44</h3>
+                <h3>email: bobbic@gmail.com</h3>
             </div>
         </footer>
     </main>
-</div>
-
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
 </div>
 
 

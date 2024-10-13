@@ -1,11 +1,13 @@
 ﻿
 .body-href{
     background-color: white;
+    border-radius: 10px;
 }
 
 .p-style {
     border-top: 2px solid dimgray;
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 .h-style {
@@ -13,11 +15,17 @@
 }
 
 a {
+    text-decoration: none;
     color: inherit;
 }
 
-.container-home {
+.container-home-page {
     display: flex;
     justify-content: space-between;
+    padding: 40px 40px;
+}
+
+img{
+    border-radius: 10px;
 }
 
