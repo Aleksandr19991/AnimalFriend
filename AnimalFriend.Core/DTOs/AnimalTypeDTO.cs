@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
-    public class AnimalTypeDTO
+    public class AnimalTypeDto
     {
         public int? Id {  get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
-    public class UserRoleDTO
+    public class UserRoleDto
     {
         public int? Id { get; set; }
 

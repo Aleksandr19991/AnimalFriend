@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
-    public class RequestsForAdditionDTO
+    public class RequestsForAdditionDto
     {
         public int? Id { get; set; }
 
-        public UserDTO? User { get; set; }
+        public UserDto? User { get; set; }
 
         public string? Name { get; set; }
 

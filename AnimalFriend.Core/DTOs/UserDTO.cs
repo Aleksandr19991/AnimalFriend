@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
-    public class UserDTO
+    public class UserDto
     {
         public int? Id { get; set; }
 
@@ -18,6 +18,6 @@ namespace AnimalFriend.Core.DTOs
 
         public string Password { get; set; }
 
-        public UserRoleDTO? Role { get; set; }
+        public UserRoleDto? Role { get; set; }
     }
 }

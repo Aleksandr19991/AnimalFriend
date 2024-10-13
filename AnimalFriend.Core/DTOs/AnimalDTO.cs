@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
-    public class AnimalDTO
+    public class AnimalDto
     {
         public int? Id { get; set; }
 
@@ -18,7 +18,7 @@ namespace AnimalFriend.Core.DTOs
 
         public string? ImagePath { get; set; }
 
-        public AnimalTypeDTO Type {  get; set; }
+        public AnimalTypeDto Type {  get; set; }
 
         public string? ShelterId { get; set; }
 
