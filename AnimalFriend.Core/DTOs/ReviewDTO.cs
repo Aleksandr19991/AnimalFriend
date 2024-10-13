@@ -18,6 +18,6 @@ namespace AnimalFriend.Core.DTOs
 
         public int? Stars { get; set; }
 
-        public int? Data {  get; set; }
+        public DateOnly? Data {  get; set; }
     }
 }
