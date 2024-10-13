@@ -8,8 +8,8 @@ namespace AnimalFriend.Core.DTOs
 {
     public class AnimalTypeDto
     {
-        public int? Id {  get; set; }
+        public int Id {  get; set; }
 
-        public string? AnimalTypeId { get; set; }
+        public int AnimalTypeId { get; set; }
     }
 }
