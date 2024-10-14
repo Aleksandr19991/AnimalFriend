@@ -20,7 +20,7 @@ namespace AnimalFriend.Core.DTOs
 
         public AnimalTypeDto Type {  get; set; }
 
-        public string? ShelterId { get; set; }
+        public ShelterDto Shelter { get; set; }
 
         public bool? IsDeleted { get; set; }
     }

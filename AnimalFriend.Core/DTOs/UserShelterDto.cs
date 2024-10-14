@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
-    public class AnimalTypeDto
+    public class UserShelterDto
     {
-        public int Id {  get; set; }
-
-        public string Type { get; set; }
+        public UserDto User { get; set; }
+        public ShelterDto Shelter { get; set; }
     }
 }

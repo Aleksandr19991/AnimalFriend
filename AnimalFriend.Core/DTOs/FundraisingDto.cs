@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
-    public class FeeDto
+    public class FundraisingDto
     {
         public int Id { get; set; }
 
-        public List<ShelterDto> Shelter {  get; set; }
+        public ShelterDto Shelter {  get; set; }
 
         public string Description { get; set; }
     }
