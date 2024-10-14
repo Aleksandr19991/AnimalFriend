@@ -12,7 +12,7 @@ namespace AnimalFriend.DAL
 
         public DbSet<DonationsDto> Donations { get; set; }
 
-        public DbSet<FundraisingDto> Fee {  get; set; }
+        public DbSet<FundraisingDto> Fundraisings {  get; set; }
 
         public DbSet<RequestsForAdditionDto> RequestsForAdd { get; set; }
 
@@ -24,7 +24,13 @@ namespace AnimalFriend.DAL
 
         public DbSet<UserRoleDto> UserRoles { get; set; }
 
-        public DbSet<UserShelterDto> UserShelter { get; set; }
+        public DbSet<UserShelterDto> UserShelters { get; set; }
 
+         
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("Connection"));
+        }
     }
 }

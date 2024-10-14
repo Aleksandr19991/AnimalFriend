@@ -18,6 +18,6 @@ namespace AnimalFriend.Core.DTOs
 
         public string Password { get; set; }
 
-        public UserRoleDto Role { get; set; }
+        public UserRoleDto? Role { get; set; }
     }
 }

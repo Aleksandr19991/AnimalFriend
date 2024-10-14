@@ -47,8 +47,9 @@
 
         if (user.Identity is not null && user.Identity.IsAuthenticated)
         {
-            var yes = user.FindFirst("isRender").Value;
-            if (yes == "yes") isRender = true;
+           
+            var yes = user.FindFirst(ClaimTypes.Role).Value;
+            if (yes != null) isRender = true;
         }
     }
     public void IsRender()

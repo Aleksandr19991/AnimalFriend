@@ -2,7 +2,7 @@
 
 @inject NavigationManager navManager
 
-<EditForm EditContext="editContext" OnSubmit="SingUp" FormName="ForAutorization" style="margin: 0 auto;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<EditForm EditContext="editContext" OnSubmit="SingUp" FormName="Registration" style="margin: 0 auto;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <DataAnnotationsValidator />
@@ -13,14 +13,19 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Email:</label>
-                        <InputText @bind-Value="ForAutorization.Email" class="form-control" id="recipient-name" />
-                        <ValidationMessage For="@(() => ForAutorization.Email)" />
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <InputText @bind-Value="Registration.Name" class="form-control" id="recipient-name" />
+                        <ValidationMessage For="@(() => Registration.Name)" />
                     </div>
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Password:</label>
-                        <InputText @bind-Value="ForAutorization.Password" class="form-control" id="recipient-name" />
-                        <ValidationMessage For="@(() => ForAutorization.Password)" />
+                        <label for="recipient-email" class="col-form-label">Email:</label>
+                        <InputText @bind-Value="Registration.Email" class="form-control" id="recipient-email" />
+                        <ValidationMessage For="@(() => Registration.Email)" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-password" class="col-form-label">Password:</label>
+                        <InputText @bind-Value="Registration.Password" class="form-control" id="recipient-password" />
+                        <ValidationMessage For="@(() => Registration.Password)" />
                     </div>
                 </form>
             </div>
@@ -35,7 +40,7 @@
 @code {
 
     [SupplyParameterFromForm]
-    private AutorizationInputModel ForAutorization { get; set; } = new();
+    private RegistrationInputModel Registration { get; set; } = new();
 
     [CascadingParameter]
     public HttpContext httpContext { get; set; }
@@ -44,7 +49,7 @@
 
     protected override void OnInitialized()
     {
-        editContext = new(ForAutorization);
+        editContext = new(Registration);
     }
 
     public async Task SingUp()
@@ -53,14 +58,19 @@
         {
             var claims = new List<Claim>()
             {
-                new Claim("isRender", "yes"),
-                new Claim("mail", ForAutorization.Email),
                 new Claim(ClaimTypes.Role, "Client")
             };
-
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var pr = new ClaimsPrincipal(identity);
             await httpContext.SignInAsync(pr);
+
+            // UserRoleDto role = new();
+            // role.Id = 1;
+            // role.Role = "Client";
+            //Registration.RoleDto = role;
+            UserService service = new();
+            service.AddUser(Registration);
+
 
             navManager.NavigateTo("./");
         }

@@ -1,5 +1,6 @@
 using AnimalFriend.Web.Components;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using AnimalFriend.DAL;
 
 namespace AnimalFriend.Web
 {
@@ -7,6 +8,7 @@ namespace AnimalFriend.Web
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.

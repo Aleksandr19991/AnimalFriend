@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalFriend.Core", "Animal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalFriend.DAL", "AnimalFriend.DAL\AnimalFriend.DAL.csproj", "{CC46251A-270F-420D-9A8C-7EE32265F506}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBCreater", "DBCreater\DBCreater.csproj", "{9F8163EE-7C11-4850-B69B-9F08CF715F99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CC46251A-270F-420D-9A8C-7EE32265F506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC46251A-270F-420D-9A8C-7EE32265F506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC46251A-270F-420D-9A8C-7EE32265F506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F8163EE-7C11-4850-B69B-9F08CF715F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8163EE-7C11-4850-B69B-9F08CF715F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F8163EE-7C11-4850-B69B-9F08CF715F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F8163EE-7C11-4850-B69B-9F08CF715F99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
