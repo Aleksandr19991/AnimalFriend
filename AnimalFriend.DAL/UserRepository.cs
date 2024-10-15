@@ -1,8 +1,6 @@
 ﻿
-
 using AnimalFriend.Core.DTOs;
-using Microsoft.Extensions.Options;
-using Npgsql;
+
 
 namespace AnimalFriend.DAL
 {
@@ -11,10 +9,17 @@ namespace AnimalFriend.DAL
     {
         Context context = new();
 
-        public void AddUser(UserDto user)
-        {
+        public int AddUser(UserDto user)
+        { 
             context.Users.Add(user);
             context.SaveChanges();
+            return user.Id;
+        }
+
+        public UserDto GetInfoForAuthorise(string email)
+        {
+            var authorize = context.Users.Where(s => s.Email == email).FirstOrDefault();
+            return authorize;
         }
 
 

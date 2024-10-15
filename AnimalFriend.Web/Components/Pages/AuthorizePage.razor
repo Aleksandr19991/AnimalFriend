@@ -1,6 +1,7 @@
-﻿@rendermode RenderMode.InteractiveServer
+﻿@page "/authorize"
+@model AnimalFriend.Web.Components.Pages.AuthorizePage
 
-<EditForm EditContext="editContext" OnSubmit="Submit" FormName="Authorize" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<EditForm EditContext="editContext" OnSubmit="Submit" FormName="Authorize" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <DataAnnotationsValidator />
@@ -30,18 +31,18 @@
     </div>
 </EditForm>
 
-@code{
-    [Parameter]
-    public string ClassName { get; set; } = "modal fade";
+@code {
+    // [Parameter]
+    // public string ClassName { get; set; } = "modal fade";
 
-    [Parameter]
-    public EventCallback<string> ClassNameChanged { get; set; }
-    
+    // [Parameter]
+    // public EventCallback<string> ClassNameChanged { get; set; }
+
     [SupplyParameterFromForm]
     private AuthorizationInputModel Authorize { get; set; } = new();
 
     [CascadingParameter]
-    public HttpContext httpContext { get; set; } 
+    public HttpContext httpContext { get; set; }
 
     public EditContext editContext;
 
@@ -51,40 +52,26 @@
     }
 
     private async Task CloseModalSingIn()
-    {
-        ClassName = "modal fade";
-        await ClassNameChanged.InvokeAsync(ClassName);
+    // {
+    //     ClassName = "modal fade";
+    //     await ClassNameChanged.InvokeAsync(ClassName);
     }
 
     private async void Submit()
     {
         if (editContext != null && editContext.Validate())
         {
-            // Console.WriteLine("here1");
-            // UserService service = new();
-            // var info = service.GetInfoForAuthorise(Authorize.Email);
-            // Console.WriteLine($"+{info.Password}");
-
-            //if (info != null && info.Password == Authorize.Password.ToLower())
-            //{
-               // Console.WriteLine(info.Id);
-                var claims = new List<Claim>()
+            
+            var claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Role, "Client"), // need add from db
                     //new Claim("id", info.Id.ToString()),
                 };
-                Console.WriteLine("here2");
-                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var pr = new ClaimsPrincipal(identity);
-                await httpContext.SignInAsync(pr);
-
-                // Login login = new();
-                // await login.GetAuthorize(claims);
-
-                ClassName = "modal fade";
-            //}
-            
+            Console.WriteLine("here2");
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var pr = new ClaimsPrincipal(identity);
+            await httpContext.SignInAsync(pr);
         }
     }
-    
-}   
+
+}

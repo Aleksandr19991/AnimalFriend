@@ -38,12 +38,11 @@
 </EditForm>
 
 @code {
-
     [SupplyParameterFromForm]
     private RegistrationInputModel Registration { get; set; } = new();
 
     [CascadingParameter]
-    public HttpContext httpContext { get; set; }
+    static public HttpContext httpContext { get; set; }
 
     public EditContext? editContext;
 
@@ -56,9 +55,16 @@
     {
         if (editContext != null && editContext.Validate())
         {
+            var password = Registration.Password.ToLower();
+            Registration.Password = password;
+            UserService service = new();
+
+            int id = service.AddUser(Registration);
+
             var claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.Role, "Client")
+                new Claim(ClaimTypes.Role, "Client"),
+                new Claim("id", id.ToString()),
             };
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var pr = new ClaimsPrincipal(identity);
@@ -68,13 +74,18 @@
             // role.Id = 1;
             // role.Role = "Client";
             //Registration.RoleDto = role;
-            UserService service = new();
-            service.AddUser(Registration);
-
 
             navManager.NavigateTo("./");
         }
     }
+
+    // public async Task GetAuthorize(List<Claim>claims)
+    // {
+    //     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+    //     var pr = new ClaimsPrincipal(identity);
+    //     await httpContext.SignInAsync(pr);
+    // }
+
 }
 
 

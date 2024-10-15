@@ -2,9 +2,9 @@
 
 namespace AnimalFriend.Core.InputModel
 {
-    public class AutorizationInputModel
+    public class AuthorizationInputModel
     {
-        [Required(ErrorMessage = "enter NAME")]
+        [Required(ErrorMessage = "enter Email")]
         [StringLength(20, MinimumLength = 6, ErrorMessage = "min char 6")]
         public string Email { get; set; }
 

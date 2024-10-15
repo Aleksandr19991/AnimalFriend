@@ -10,6 +10,9 @@ namespace DBCreater
             Context context = new Context();
             //context.Database.EnsureCreated();
 
+            var authorize = context.Users.Where(s => s.Email == "123456@gmail.com").FirstOrDefault();
+            Console.WriteLine(authorize.Email);
+
             //var roleId = new UserRoleDto();
             //roleId.Id = 3;
             //roleId.Role = "Admin";

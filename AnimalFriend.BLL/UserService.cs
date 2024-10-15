@@ -1,6 +1,7 @@
 ﻿using AnimalFriend.DAL;
 using AnimalFriend.Core.DTOs;
 using AnimalFriend.Core.InputModel;
+using AnimalFriend.Core.OutputModels;
 using AutoMapper;
 using AnimalFriend.BLL.Mappings;
 
@@ -24,11 +25,19 @@ namespace AnimalFriend.BLL
             _mapper = new Mapper(config);
         }
 
-        public void AddUser(RegistrationInputModel user)
+        public int AddUser(RegistrationInputModel user)
         {
             var userDto = _mapper.Map<UserDto>(user);
-            UserRepository.AddUser(userDto);
+            int id = UserRepository.AddUser(userDto);
+            return id;
         }
+        public AuthorizationOutputModel GetInfoForAuthorise(string email)
+        {
+            var info = UserRepository.GetInfoForAuthorise(email);
+            var result = _mapper.Map<AuthorizationOutputModel>(info);
+            return result;
+        }
+
 
     }
 }

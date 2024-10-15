@@ -2,7 +2,7 @@
 
 namespace AnimalFriend.BLL
 {
-    public class ShelterManager
+    public class ShelterService
     {
         public List<ShelterCardOutputModel> GetAllShelter()
         {
