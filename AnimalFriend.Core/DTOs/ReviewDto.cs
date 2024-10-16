@@ -1,4 +1,8 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.DTOs
 {
@@ -12,7 +16,7 @@ namespace AnimalFriend.Core.DTOs
 
         public int Stars { get; set; }
 
-        public DateOnly Data { get; set; }
+        public DateOnly Data {  get; set; }
 
         public UserDto User { get; set; }
     }
