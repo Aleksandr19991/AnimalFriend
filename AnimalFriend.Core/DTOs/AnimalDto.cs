@@ -1,4 +1,5 @@
 ﻿
+
 namespace AnimalFriend.Core.DTOs
 {
     public class AnimalDto
@@ -13,7 +14,7 @@ namespace AnimalFriend.Core.DTOs
 
         public string? ImagePath { get; set; }
 
-        public AnimalTypeDto Type {  get; set; }
+        public AnimalTypeDto Type { get; set; }
 
         public ShelterDto Shelter { get; set; }
 

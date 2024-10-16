@@ -1,4 +1,5 @@
 ﻿
+
 namespace AnimalFriend.Core.DTOs
 {
     public class UserShelterDto

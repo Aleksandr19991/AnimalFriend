@@ -14,7 +14,7 @@ namespace AnimalFriend.DAL
 
         public DbSet<FundraisingDto> Fundraisings {  get; set; }
 
-        public DbSet<RequestsForAdditionDto> RequestsForAdd { get; set; }
+        public DbSet<RequestToAddShelterDto> RequestsForAdd { get; set; }
 
         public DbSet<ReviewDto> Reviews { get; set; }
 

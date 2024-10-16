@@ -1,4 +1,5 @@
 ﻿
+
 namespace AnimalFriend.Core.DTOs
 {
     public class ReviewDto
@@ -11,7 +12,7 @@ namespace AnimalFriend.Core.DTOs
 
         public int Stars { get; set; }
 
-        public DateOnly Data {  get; set; }
+        public DateOnly Data { get; set; }
 
         public UserDto User { get; set; }
     }

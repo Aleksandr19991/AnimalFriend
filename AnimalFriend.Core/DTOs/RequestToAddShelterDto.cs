@@ -1,7 +1,8 @@
 ﻿
+
 namespace AnimalFriend.Core.DTOs
 {
-    public class RequestsForAdditionDto
+    public class RequestToAddShelterDto
     {
         public int Id { get; set; }
 

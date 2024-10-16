@@ -1,4 +1,5 @@
 ﻿
+
 namespace AnimalFriend.Core.DTOs
 {
     public class DonationsDto
@@ -7,7 +8,7 @@ namespace AnimalFriend.Core.DTOs
 
         public int Sum { get; set; }
 
-        public DateTime Date {  get; set; }
+        public DateTime Date { get; set; }
 
         public ShelterDto Shelter { get; set; }
 
