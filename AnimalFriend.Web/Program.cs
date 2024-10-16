@@ -12,7 +12,6 @@ namespace AnimalFriend.Web
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            //builder.Services.AddRazorPages();
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
             
@@ -22,7 +21,7 @@ namespace AnimalFriend.Web
                     options =>
                     {
                         options.Cookie.Name = "auth_token";
-                        options.LoginPath = "/Authorize";
+                        options.LoginPath = "/login";
                         options.Cookie.MaxAge = TimeSpan.FromDays(7);
                     });
 
