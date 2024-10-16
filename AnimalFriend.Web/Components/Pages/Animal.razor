@@ -1,7 +1,7 @@
 ﻿@page "/animal/{Id:int}"
-@rendermode RenderMode.InteractiveServer
+@* @rendermode RenderMode.InteractiveServer *@
 
-<div class="card mb-3" style="max-width: 1000px;">
+@* <div class="card mb-3" style="max-width: 1000px;">
     <div class="row g-0">
         <div class="col-md-4">
             <img src="@_animal.ImagePath" class="img-fluid rounded-start" alt="@_animal.Name">
@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> *@
 
 @code {
     [Parameter]
@@ -31,8 +31,8 @@
         _animalManager = new AnimalManager();
     }
     
-    protected override void OnInitialized()
-    {
-        _animal = _animalManager.GeAnimalById(Id);
-    }
+    // protected override void OnInitialized()
+    // {
+    //     _animal = _animalManager.GeAnimalById(Id);
+    // }
 }
