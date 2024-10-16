@@ -14,18 +14,10 @@ namespace AnimalFriend.DAL
 
         //context.Database.EnsureCreated();
 
-        private Context db;
-
-        public AnimalRepository()
+        public void AddAnimal(AnimalDto animal)
         {
-            this.db = context;
-        }
-
-        public int AddAnimal(AnimalDto animal)
-        {
-            db.Animals.Add(animal);
-
-            return 0;
+            context.Animals.Add(animal);
+            context.SaveChanges();
         }
 
         public AnimalDto GetAnimalById(int Animalid) 
