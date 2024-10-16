@@ -1,24 +1,29 @@
 ﻿@inject NavigationManager navManager
 
-<EditForm EditContext="editContext" OnSubmit="Submit" FormName="Authorize" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<EditForm EditContext="editContext" OnSubmit="SignUp" FormName="Registration" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <DataAnnotationsValidator />
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Authorize window</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Registration window</h5>
                 <button @onclick="CloseModalSingIn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <InputText @bind-Value="Registration.Name" class="form-control" id="recipient-name" />
+                        <ValidationMessage For="@(() => Registration.Name)" />
+                    </div>
+                    <div class="mb-3">
                         <label for="recipient-email" class="col-form-label">Email:</label>
-                        <InputText @bind-Value="Authorize.Email" class="form-control" id="recipient-emil" />
-                        <ValidationMessage For="@(() => Authorize.Email)" />
+                        <InputText @bind-Value="Registration.Email" class="form-control" id="recipient-email" />
+                        <ValidationMessage For="@(() => Registration.Email)" />
                     </div>
                     <div class="mb-3">
                         <label for="recipient-password" class="col-form-label">Password:</label>
-                        <InputText @bind-Value="Authorize.Password" class="form-control" id="recipient-password" />
-                        <ValidationMessage For="@(() => Authorize.Password)" />
+                        <InputText @bind-Value="Registration.Password" class="form-control" id="recipient-password" />
+                        <ValidationMessage For="@(() => Registration.Password)" />
                     </div>
                 </form>
             </div>
@@ -26,16 +31,20 @@
                 <button @onclick=CloseModalSingIn type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Send</button>
             </div>
-            @if (_isError)
-            {
-                <div style="color: red; padding: 5px 15px">Authorizatiion error</div>
-            }
         </div>
+        @if (_isError)
+        {
+            <div style="color: red; padding: 5px 15px">Registration error</div>
+        }
     </div>
 </EditForm>
 
-@code{
+@code
+{
     private bool _isError { get; set; } = false;
+
+    [SupplyParameterFromForm]
+    private RegistrationInputModel Registration { get; set; } = new();
 
     [Parameter]
     public string ClassName { get; set; } = "modal fade";
@@ -43,19 +52,11 @@
     [Parameter]
     public EventCallback<string> ClassNameChanged { get; set; }
 
-    [SupplyParameterFromForm]
-    private AuthorizationInputModel Authorize { get; set; }
+    private EditContext? editContext;
 
-    public EditContext editContext;
-
-    public AutorizeModalWindow()
+    public RegistrationModalWindow()
     {
-        Authorize = new();
-    }
-
-    protected override void OnInitialized()
-    {
-        editContext = new(Authorize);
+        editContext = new(Registration);
     }
 
     private async Task CloseModalSingIn()
@@ -64,27 +65,25 @@
         await ClassNameChanged.InvokeAsync(ClassName);
     }
 
-    private async void Submit()
+    public async Task SignUp()
     {
         if (editContext != null && editContext.Validate())
         {
-            UserService service = new();
-            var info = service.GetInfoForAuthorise(Authorize.Email);
-            Console.WriteLine($"+{info.Password}");
-
-            if (info != null && info.Password == Authorize.Password.ToLower())
+            var password = Registration.Password.ToLower();
+            Registration.Password = password;
+            try
             {
-                Login.Id = info.Id;
+                UserService service = new();
+                Login.Id = service.AddUser(Registration);
                 ClassName = "modal fade";
-                CastomHeader.IsRender = true;
                 await ClassNameChanged.InvokeAsync(ClassName);
                 navManager.NavigateTo("/login");
             }
-            else
+            catch
             {
                 _isError = true;
             }
-        }
+        }      
     }
     
-}   
+}

@@ -10,6 +10,6 @@ namespace AnimalFriend.Core.DTOs
     {
         public int Id {  get; set; }
 
-        public int AnimalTypeId { get; set; }
+        public string Type { get; set; }
     }
 }

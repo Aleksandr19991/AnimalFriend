@@ -8,51 +8,58 @@
     </a>
 
     <div class="header-center-button">
-        @if (isRender)
+        @if (IsRender)
         {
-            <a href="/logout" @onclick=IsRender class="btn btn-primary">log out</a>
+            <a href="/logout" @onclick=IsRenderToggle class="btn btn-primary">log out</a>
         }
         else
         {
             <button @onclick=OpenModalSingIn class="btn btn-primary">sign in</button>
-            <a href="/login" class="btn btn-primary">sign up</a>
+            <button @onclick=OpenModalSingUp class="btn btn-primary">sign up</button>
         }
     </div>
 
 </header>
 
-<AutorizeModalWindow @bind-ClassName="@_modalOpenClose" />
+<AutorizeModalWindow @bind-ClassName="@_modalAuthOpenClose" />
+<RegistrationModalWindow @bind-ClassName="@_modalRegistrOpenClose" />
 
 @code {
-    private string _modalOpenClose { get; set; } = "modal fade";
+    string _modalRegistrOpenClose { get; set; } = "modal fade";
+    string _modalAuthOpenClose { get; set; } = "modal fade";
 
     private void OpenModalSingIn()
     {
-        _modalOpenClose = "modal-open";
+        _modalAuthOpenClose = "modal-open";
+        _modalRegistrOpenClose = "modal fade";
+    }
+    private void OpenModalSingUp()
+    {
+        _modalRegistrOpenClose = "modal-open";
+        _modalAuthOpenClose = "modal fade";
     }
 
     [CascadingParameter]
     public Task<AuthenticationState> State { get; set; }
 
-    //private List<Claim> claims = new List<Claim>();
+    static public bool IsRender { get; set; } = false;
 
-    bool isRender = false;
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     await base.OnInitializedAsync();
 
-    protected override async Task OnInitializedAsync()
+    //     var authState = await State;
+    //     var user = authState.User;
+
+    //     if (user.Identity is not null && user.Identity.IsAuthenticated)
+    //     {
+           
+    //         var yes = user.FindFirst(ClaimTypes.Role).Value;
+    //         if (yes != null) IsRender = true;
+    //     }
+    // }
+    public void IsRenderToggle()
     {
-        await base.OnInitializedAsync();
-
-        var authState = await State;
-        var user = authState.User;
-
-        if (user.Identity is not null && user.Identity.IsAuthenticated)
-        {
-            var yes = user.FindFirst("isRender").Value;
-            if (yes == "yes") isRender = true;
-        }
-    }
-    public void IsRender()
-    {
-        isRender = false;
+        IsRender = false;
     }
 }

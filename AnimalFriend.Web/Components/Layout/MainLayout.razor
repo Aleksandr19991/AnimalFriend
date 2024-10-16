@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="main-container">
+<div class="main-container" @onclick=@Update>
     <div class="sidebar">
         <NavMenu />
     </div>
@@ -21,6 +21,10 @@
         </footer>
     </main>
 </div>
+
+@code{
+    public void Update(){}
+}
 
 
 

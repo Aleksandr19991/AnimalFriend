@@ -1,10 +1,10 @@
-﻿using AnimalFriend.Core;
+﻿
 using Microsoft.EntityFrameworkCore;
 using AnimalFriend.Core.DTOs;
 
 namespace AnimalFriend.DAL
 {
-    internal class Context : DbContext
+    public class Context : DbContext
     {
         public DbSet<AnimalDto> Animals { get; set; }
 
@@ -12,7 +12,7 @@ namespace AnimalFriend.DAL
 
         public DbSet<DonationsDto> Donations { get; set; }
 
-        public DbSet<FeeDto> Fee {  get; set; }
+        public DbSet<FundraisingDto> Fundraisings {  get; set; }
 
         public DbSet<RequestsForAdditionDto> RequestsForAdd { get; set; }
 
@@ -22,6 +22,13 @@ namespace AnimalFriend.DAL
 
         public DbSet<UserDto> Users { get; set; }
 
-        public DbSet<UserRoleDto> UserRoles { get; set; }                    
+        public DbSet<UserRoleDto> UserRoles { get; set; }
+
+        public DbSet<UserShelterDto> UserShelters { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("Connection"));
+        }
     }
 }

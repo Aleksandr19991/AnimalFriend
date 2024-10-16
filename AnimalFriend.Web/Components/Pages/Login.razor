@@ -1,70 +1,28 @@
 ﻿@page "/login"
-
 @inject NavigationManager navManager
 
-<EditForm EditContext="editContext" OnSubmit="SingUp" FormName="ForAutorization" style="margin: 0 auto;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <DataAnnotationsValidator />
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registration window</h5>
-                <a href="/" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Email:</label>
-                        <InputText @bind-Value="ForAutorization.Email" class="form-control" id="recipient-name" />
-                        <ValidationMessage For="@(() => ForAutorization.Email)" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Password:</label>
-                        <InputText @bind-Value="ForAutorization.Password" class="form-control" id="recipient-name" />
-                        <ValidationMessage For="@(() => ForAutorization.Password)" />
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <a href="/" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </div>
-        </div>
-    </div>
-</EditForm>
-
 @code {
-
-    [SupplyParameterFromForm]
-    private AutorizationInputModel ForAutorization { get; set; } = new();
-
     [CascadingParameter]
     public HttpContext httpContext { get; set; }
 
-    public EditContext? editContext;
+    static public int Id { get; set; }
 
-    protected override void OnInitialized()
+    public async Task SignUp()
     {
-        editContext = new(ForAutorization);
-    }
-
-    public async Task SingUp()
-    {
-        if (editContext != null && editContext.Validate())
-        {
-            var claims = new List<Claim>()
+        var claims = new List<Claim>()
             {
-                new Claim("isRender", "yes"),
-                new Claim("mail", ForAutorization.Email),
-                new Claim(ClaimTypes.Role, "Client")
+                new Claim(ClaimTypes.Role, "User"),
+                new Claim("id", Id.ToString()),
             };
+        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var pr = new ClaimsPrincipal(identity);
+        await httpContext.SignInAsync(pr);      
 
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var pr = new ClaimsPrincipal(identity);
-            await httpContext.SignInAsync(pr);
-
-            navManager.NavigateTo("./");
-        }
+        navManager.NavigateTo("./");  
     }
+
+    protected override Task OnInitializedAsync() => SignUp();
+    
 }
 
 

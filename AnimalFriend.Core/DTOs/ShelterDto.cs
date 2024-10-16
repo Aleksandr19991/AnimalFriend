@@ -14,15 +14,12 @@ namespace AnimalFriend.Core.DTOs
 
         public string Description { get; set; }
 
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         public string Phone {  get; set; }
 
-        public bool? IsDeleted { get; set; }
-
-        public List<UserDto> User { get; set; }
+        public bool IsDeleted { get; set; }
 
         public AnimalTypeDto Type { get; set; }
-
     }
 }
