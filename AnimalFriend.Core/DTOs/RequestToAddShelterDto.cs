@@ -14,10 +14,10 @@ namespace AnimalFriend.Core.DTOs
 
         public string Address { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; } 
 
-        public string IsYes { get; set; }
+        public bool IsYes { get; set; } 
     }
 }

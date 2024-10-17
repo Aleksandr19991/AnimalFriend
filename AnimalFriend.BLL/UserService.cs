@@ -37,7 +37,5 @@ namespace AnimalFriend.BLL
             var result = _mapper.Map<AuthorizationOutputModel>(info);
             return result;
         }
-
-
     }
 }

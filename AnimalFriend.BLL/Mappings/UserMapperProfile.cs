@@ -9,9 +9,12 @@ namespace AnimalFriend.BLL.Mappings
     {
         public UserMapperProfile()
         {
-            CreateMap<RegistrationInputModel, UserDto>();//ReverseMap() => с этим сможет работать в обратную сторону но formember не работает тогда
-            CreateMap<UserDto, AuthorizationOutputModel>();
+            CreateMap<RegistrationInputModel, UserDto>()
+                .ForMember(dest => dest.Role.Id, opt => opt.MapFrom(src => src.RoleId));
+            CreateMap<UserDto, AuthorizationOutputModel>()
+            .ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => src.Role));
             //.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));  // if name != name
+            //ReverseMap() => с этим сможет работать в обратную сторону но formember не работает тогда
         }
     }
 }
