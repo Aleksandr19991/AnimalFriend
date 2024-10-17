@@ -12,42 +12,51 @@ namespace AnimalFriend.DAL
     {
         Context context = new Context();
 
-        public void AddAnimal(AnimalDto animal)
+        public int AddAnimal(AnimalDto animal)
         {
             context.Animals.Add(animal);
             context.SaveChanges();
+            
+            return animal.Id;
         }
 
-        public AnimalTypeDto GetTypeAnimalById(int Animalid)
+        public AnimalDto GetAnimalById(int AnimalId)
         {
-            var animal = context.Animals.Where(a => a.Id == Animalid).FirstOrDefault();
-
-            return animal.Type;
-        }
-
-        public AnimalDto GetAnimalById(int Animalid) 
-        {
-            var animal = context.Animals.Where(a => a.Id == Animalid).FirstOrDefault();
+            var animal = context.Animals.Where(a => a.Id == AnimalId).FirstOrDefault();
 
             return animal;
         }
 
-        public int UpdateAnimal(AnimalDto animal)
-        {
-            foreach (var item in context.Animals) 
-            {
-                item.Id = animal.Id;
-                item.Name = animal.Name;
-                item.Age = animal.Age;
-                item.Description = animal.Description;
-                item.ImagePath = animal.ImagePath;
-                item.Type = animal.Type;
-            }
-            
-            context.SaveChanges();
+        public List<AnimalDto> GetAllAnimals() 
+        {  
+            return context.Animals.ToList(); 
+        }
 
-            return 0;
-            //найти решение
+        //public List<AnimalDto> GetAllAnimalsByShelterId(int ShelterId) 
+        //{
+        //    var animal = context.Animals.Include(a => a.Shelter).Where(s => s.Id == ShelterId).FirstOrDefault();
+
+        //    return context.Animals.ToList();
+        //}
+
+        //public int UpdateAnimal(AnimalDto animal)
+        //{
+        //    context.Animals.Update(animal);
+        //    context.SaveChanges();
+        //    return animal.Id;
+        //}
+
+        //public AnimalTypeDto GetTypeAnimalById(int AnimalId)
+        //{
+        //    var animal = context.Animals.Where(a => a.Id == AnimalId).FirstOrDefault();
+
+        //    return animal.Type;
+        //}
+
+        public void RemoveAnimal(AnimalDto animal)
+        {
+            context.Animals.Remove(animal);
+            context.SaveChanges();
         }
     }
 }
