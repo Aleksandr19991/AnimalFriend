@@ -18,6 +18,8 @@ namespace AnimalFriend.Core.InputModel
         [StringLength(20, MinimumLength = 6, ErrorMessage = "min char 6")]
         public string Password { get; set; }
 
+        public int RoleId { get; set; }
+
         //public  UserRoleDto RoleDto { get; set; }
     }
 }

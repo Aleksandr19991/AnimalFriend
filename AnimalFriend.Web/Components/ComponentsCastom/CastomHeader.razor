@@ -7,7 +7,7 @@
         <img class="smile-position" src="./images/smilik.png" width="50" height="50" alt="smilik">
     </a>
 
-    <div class="header-center-button">
+    <div class="header-center-button"> 
         @if (IsRender)
         {
             <a href="/logout" @onclick=IsRenderToggle class="btn btn-primary">log out</a>
@@ -44,20 +44,18 @@
 
     static public bool IsRender { get; set; } = false;
 
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     await base.OnInitializedAsync();
+    protected override async Task OnInitializedAsync()
+    {
+        // await base.OnInitializedAsync();
 
-    //     var authState = await State;
-    //     var user = authState.User;
+        var authState = await State;
+        var user = authState.User;
 
-    //     if (user.Identity is not null && user.Identity.IsAuthenticated)
-    //     {
-           
-    //         var yes = user.FindFirst(ClaimTypes.Role).Value;
-    //         if (yes != null) IsRender = true;
-    //     }
-    // }
+        if (user.Identity is not null && user.Identity.IsAuthenticated)
+        {         
+            IsRender = true;
+        }
+    }
     public void IsRenderToggle()
     {
         IsRender = false;

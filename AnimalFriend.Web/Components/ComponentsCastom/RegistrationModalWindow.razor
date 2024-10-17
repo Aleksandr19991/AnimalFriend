@@ -31,11 +31,11 @@
                 <button @onclick=CloseModalSingIn type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Send</button>
             </div>
-        </div>
-        @if (_isError)
-        {
-            <div style="color: red; padding: 5px 15px">Registration error</div>
-        }
+            @if (_isError)
+            {
+                <div style="color: red; padding: 5px 15px">Registration error</div>
+            }
+        </div> 
     </div>
 </EditForm>
 
@@ -71,18 +71,20 @@
         {
             var password = Registration.Password.ToLower();
             Registration.Password = password;
-            try
-            {
+            Registration.RoleId = 1;
+            //try
+            //{
                 UserService service = new();
                 Login.Id = service.AddUser(Registration);
+                Login.Role = 1;
                 ClassName = "modal fade";
                 await ClassNameChanged.InvokeAsync(ClassName);
                 navManager.NavigateTo("/login");
-            }
-            catch
-            {
-                _isError = true;
-            }
+            //}
+            //catch
+            //{
+                //_isError = true;
+            //}
         }      
     }
     
