@@ -70,11 +70,12 @@
         {
             UserService service = new();
             var info = service.GetInfoForAuthorise(Authorize.Email);
-            Console.WriteLine($"+{info.Password}");
+            Console.WriteLine($"{info.RoleId}");
 
             if (info != null && info.Password == Authorize.Password.ToLower())
             {
                 Login.Id = info.Id;
+                Login.Role = info.RoleId;
                 ClassName = "modal fade";
                 CastomHeader.IsRender = true;
                 await ClassNameChanged.InvokeAsync(ClassName);

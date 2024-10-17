@@ -7,11 +7,13 @@
 
     static public int Id { get; set; }
 
+    static public int Role { get; set; }
+
     public async Task SignUp()
     {
         var claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.Role, "User"),
+                new Claim(ClaimTypes.Role, Role.ToString()),
                 new Claim("id", Id.ToString()),
             };
         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

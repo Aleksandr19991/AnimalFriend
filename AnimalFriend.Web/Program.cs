@@ -1,6 +1,6 @@
 using AnimalFriend.Web.Components;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using AnimalFriend.DAL;
+using AnimalFriend.BLL;
 
 namespace AnimalFriend.Web
 {
