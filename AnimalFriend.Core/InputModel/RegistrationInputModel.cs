@@ -1,6 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 using AnimalFriend.Core.DTOs;
+using AnimalFriend.Core.OutputModels;
 
 namespace AnimalFriend.Core.InputModel
 {
@@ -17,9 +18,5 @@ namespace AnimalFriend.Core.InputModel
         [Required(ErrorMessage = "enter Password")]
         [StringLength(20, MinimumLength = 6, ErrorMessage = "min char 6")]
         public string Password { get; set; }
-
-        public int RoleId { get; set; }
-
-        //public  UserRoleDto RoleDto { get; set; }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace AnimalFriend.Core.DTOs
 {
@@ -18,6 +14,6 @@ namespace AnimalFriend.Core.DTOs
 
         public string Password { get; set; }
 
-        public UserRoleDto? Role { get; set; }
+        public UserRoleDto? Role { get; set; } 
     }
 }

@@ -71,20 +71,19 @@
         {
             var password = Registration.Password.ToLower();
             Registration.Password = password;
-            Registration.RoleId = 1;
-            //try
-            //{
+            try
+            {
                 UserService service = new();
                 Login.Id = service.AddUser(Registration);
                 Login.Role = 1;
                 ClassName = "modal fade";
                 await ClassNameChanged.InvokeAsync(ClassName);
                 navManager.NavigateTo("/login");
-            //}
-            //catch
-            //{
-                //_isError = true;
-            //}
+            }
+            catch
+            {
+                _isError = true;
+            }
         }      
     }
     
