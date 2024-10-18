@@ -1,11 +1,4 @@
-﻿using AnimalFriend.Core.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AnimalFriend.Core.InputModel
+﻿namespace AnimalFriend.Core.InputModel
 {
     public class AnimalInputModel
     {
@@ -18,6 +11,8 @@ namespace AnimalFriend.Core.InputModel
         public string? Description { get; set; }
 
         public string? ImagePath { get; set; }
+
+        public string? Type { get; set; }
 
         public bool? IsDeleted { get; set; }
     }
