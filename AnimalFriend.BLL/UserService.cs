@@ -37,5 +37,11 @@ namespace AnimalFriend.BLL
             var result = _mapper.Map<AuthorizationOutputModel>(info);
             return result;
         }
+        public UserRoleModel GetUserRole(int id)
+        {
+            var role = UserRepository.GetUserRole(id);
+            var result = _mapper.Map<UserRoleModel>(role);
+            return result;
+        }
     }
 }

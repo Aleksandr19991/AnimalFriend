@@ -1,6 +1,6 @@
 ﻿@inject NavigationManager navManager
 
-<EditForm EditContext="editContext" OnSubmit="SignUp" FormName="Registration" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<EditForm EditContext="editContext" OnValidSubmit="SignUp" FormName="Registration" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <DataAnnotationsValidator />
@@ -33,7 +33,7 @@
             </div>
             @if (_isError)
             {
-                <div style="color: red; padding: 5px 15px">Registration error</div>
+                <div style="color: red; padding: 5px 15px">@Message</div>
             }
         </div> 
     </div>
@@ -54,6 +54,8 @@
 
     private EditContext? editContext;
 
+    private string Message { get; set; } = "";
+
     public RegistrationModalWindow()
     {
         editContext = new(Registration);
@@ -71,20 +73,32 @@
         {
             var password = Registration.Password.ToLower();
             Registration.Password = password;
-            Registration.RoleId = 1;
-            //try
-            //{
-                UserService service = new();
-                Login.Id = service.AddUser(Registration);
-                Login.Role = 1;
-                ClassName = "modal fade";
-                await ClassNameChanged.InvokeAsync(ClassName);
-                navManager.NavigateTo("/login");
-            //}
-            //catch
-            //{
-                //_isError = true;
-            //}
+
+            UserRepository repository = new();
+            if (!repository.GetInfoForRegistration(Registration.Email))
+            {
+                try
+                {
+                    UserService service = new();
+                    Login.Id = service.AddUser(Registration);
+                    Login.Role = 1;
+                    ClassName = "modal fade";
+                    CastomHeader.IsRender = true;
+                    await ClassNameChanged.InvokeAsync(ClassName);
+                    navManager.NavigateTo("/login");
+                }
+                catch
+                {
+                    Message = "Registration error";
+                    _isError = true;
+                }
+            }
+            else
+            {
+
+                Message = "email alredy exists";
+                _isError = true;
+            }       
         }      
     }
     
