@@ -1,6 +1,6 @@
 ﻿@inject NavigationManager navManager
 
-<EditForm EditContext="editContext" OnSubmit="Submit" FormName="Authorize" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<EditForm EditContext="editContext" OnValidSubmit="Submit" FormName="Authorize" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <DataAnnotationsValidator />
@@ -70,7 +70,6 @@
         {
             UserService service = new();
             var info = service.GetInfoForAuthorise(Authorize.Email);
-            Console.WriteLine($"{info.RoleId}");
 
             if (info != null && info.Password == Authorize.Password.ToLower())
             {
