@@ -1,7 +1,79 @@
 ﻿@page "/manager-page"
 
+@rendermode RenderMode.InteractiveServer
+
+<PageTitle>Admin page</PageTitle>
+
 <h3>ManagerPage</h3>
 
+<div class="container-main">
+    <button class="btn btn-primary castom-button">application for registration</button>
+    <button class="btn btn-primary castom-button">sign in</button>
+    <button class="btn btn-primary castom-button">sign in</button>
+</div>
+
+<EditForm EditContext="editContext" OnValidSubmit="CreateApplication" FormName="Application" class="" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <DataAnnotationsValidator />
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Authorize window</h5>
+                <button @onclick="CloseWindowRegistration" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-email" class="col-form-label">Email:</label>
+                        <InputText @bind-Value="Application.Name" class="form-control" id="recipient-emil" />
+                        <ValidationMessage For="@(() => Application.Name)" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-password" class="col-form-label">Password:</label>
+                        <InputText @bind-Value="Application.Email" class="form-control" id="recipient-password" />
+                        <ValidationMessage For="@(() => Application.Email)" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button @onclick=CloseWindowRegistration type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+            @if (true)
+            {
+                <div style="color: red; padding: 5px 15px">Authorizatiion error</div>
+            }
+        </div>
+    </div>
+</EditForm>
+
 @code {
+    private bool _isOpenReg { get; set; } = false;
+
+    private ApplicationCreateShelterInputModel Application { get; set }
+
+    public EditContext editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new(Application);
+
+    }
+
+    private void OpenWindowRegistration()
+    {
+        _isOpenReg = true;
+    }
+
+    private void CloseWindowRegistration()
+    {
+        _isOpenReg = true;
+    }
+
+    private void CreateApplication()
+    {
+
+    }
+
 
 }
+            
