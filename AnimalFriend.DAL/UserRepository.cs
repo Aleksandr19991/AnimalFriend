@@ -39,10 +39,7 @@ namespace AnimalFriend.DAL
             catch
             {
                 return true;
-            }
-            
+            }  
         }
-
-
     }
 }
