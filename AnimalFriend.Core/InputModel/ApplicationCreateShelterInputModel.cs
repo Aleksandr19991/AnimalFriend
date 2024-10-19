@@ -1,5 +1,4 @@
 ﻿
-using AnimalFriend.Core.DTOs;
 
 namespace AnimalFriend.Core.InputModel
 {
@@ -10,6 +9,8 @@ namespace AnimalFriend.Core.InputModel
         public int UserId { get; set; }
 
         public string Name { get; set; }
+
+        public string Type { get; set; }
 
         public string Phone { get; set; }
 
@@ -22,5 +23,7 @@ namespace AnimalFriend.Core.InputModel
         public bool IsActive { get; set; } = true;
 
         public bool IsYes { get; set; } = true;
+
+        public DateTime DateTimeRegister { get; set; } = DateTime.Now;
     }
 }

@@ -7,73 +7,110 @@
 <h3>ManagerPage</h3>
 
 <div class="container-main">
-    <button class="btn btn-primary castom-button">application for registration</button>
+    <button @onclick="OpenWindowBidder" class="btn btn-primary castom-button">application for registration</button>
     <button class="btn btn-primary castom-button">sign in</button>
     <button class="btn btn-primary castom-button">sign in</button>
 </div>
 
-<EditForm EditContext="editContext" OnValidSubmit="CreateApplication" FormName="Application" class="" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <DataAnnotationsValidator />
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Authorize window</h5>
-                <button @onclick="CloseWindowRegistration" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
+@if (_isShowBidder)
+{
+    <EditForm EditContext="editContext" OnValidSubmit="CreateApplication" FormName="Application" class="" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <DataAnnotationsValidator />
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Authorize window</h5>
+                    <button @onclick="CloseWindowBidder" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <DataAnnotationsValidator />
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <InputText @bind-Value="Bidder.Name" class="form-control" id="recipient-name" />
+                        <ValidationMessage For="@(() => Bidder.Name)" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-phone" class="col-form-label">Phone:</label>
+                        <InputText @bind-Value="Bidder.Phone" class="form-control" id="recipient-phone" />
+                        <ValidationMessage For="@(() => Bidder.Phone)" />
+                    </div>
                     <div class="mb-3">
                         <label for="recipient-email" class="col-form-label">Email:</label>
-                        <InputText @bind-Value="Application.Name" class="form-control" id="recipient-emil" />
-                        <ValidationMessage For="@(() => Application.Name)" />
+                        <InputText @bind-Value="Bidder.Email" class="form-control" id="recipient-email" />
+                        <ValidationMessage For="@(() => Bidder.Email)" />
                     </div>
                     <div class="mb-3">
-                        <label for="recipient-password" class="col-form-label">Password:</label>
-                        <InputText @bind-Value="Application.Email" class="form-control" id="recipient-password" />
-                        <ValidationMessage For="@(() => Application.Email)" />
+                        <label for="recipient-address" class="col-form-label">Address:</label>
+                        <InputText @bind-Value="Bidder.Address" class="form-control" id="recipient-address" />
+                        <ValidationMessage For="@(() => Bidder.Address)" />
                     </div>
-                </form>
+                    <div class="mb-3">
+                        <label for="recipient-description" class="col-form-label">Description:</label>
+                        <InputTextArea @bind-Value="Bidder.Description" class="form-control" id="recipient-description" />
+                        <ValidationMessage For="@(() => Bidder.Description)" />
+                    </div>
+
+                    <InputRadioGroup @bind-Value="Bidder.Type">
+                        @foreach (var type in Types)
+                        {
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <InputRadio Value="@type" class="form-check-input" />
+                                    @type
+                                </label>
+                            </div>
+                        }
+                    </InputRadioGroup>
+                    @* <ValidationMessage For="@(() => Bidder.Type)" /> *@
+                </div>
+                <div class="modal-footer">
+                    <button @onclick=CloseWindowBidder type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+                @if (false)
+                {
+                    <div style="color: red; padding: 5px 15px">Authorizatiion error</div>
+                }
             </div>
-            <div class="modal-footer">
-                <button @onclick=CloseWindowRegistration type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </div>
-            @if (true)
-            {
-                <div style="color: red; padding: 5px 15px">Authorizatiion error</div>
-            }
         </div>
-    </div>
-</EditForm>
+    </EditForm>
+}
 
 @code {
-    private bool _isOpenReg { get; set; } = false;
+    //private bool _isOpenReg { get; set; } = false;
 
-    private ApplicationCreateShelterInputModel Application { get; set }
+    private ApplicationCreateShelterInputModel Bidder { get; set; } = new();
 
     public EditContext editContext;
 
+    private bool _isShowBidder { get; set; } = false;
+
+    private List<string> Types { get; set; } = [];
+
+    public ManagerPage()
+    {
+        Types = new() { "dog", "cat", "all animal", "other" };
+    }
+
     protected override void OnInitialized()
     {
-        editContext = new(Application);
+        editContext = new(Bidder);
 
     }
 
-    private void OpenWindowRegistration()
+    private void OpenWindowBidder()
     {
-        _isOpenReg = true;
+        _isShowBidder = true;
     }
 
-    private void CloseWindowRegistration()
+    private void CloseWindowBidder()
     {
-        _isOpenReg = true;
+        _isShowBidder = false;
     }
 
     private void CreateApplication()
     {
 
     }
-
-
 }
             
