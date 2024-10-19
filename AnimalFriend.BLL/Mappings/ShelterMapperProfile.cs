@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AnimalFriend.Core.DTOs;
+using AnimalFriend.Core.InputModel;
+using AnimalFriend.Core.OutputModels;
+using AutoMapper;
 
 namespace AnimalFriend.BLL.Mappings
 {
-    internal class ShelterMapperProfile
+    public class ShelterMapperProfile: Profile
     {
+        public ShelterMapperProfile() 
+        {
+            CreateMap<ShelterInputModel, ShelterDto>();
+            CreateMap<ShelterDto, ShelterCardOutputModel>();
+        }
     }
 }
