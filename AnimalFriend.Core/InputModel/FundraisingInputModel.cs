@@ -1,8 +1,6 @@
-﻿
-
-namespace AnimalFriend.Core.DTOs
+﻿namespace AnimalFriend.Core.InputModel
 {
-    public class FundraisingDto
+    public class FundraisingInputModel
     {
         public int Id { get; set; }
 
@@ -11,9 +9,5 @@ namespace AnimalFriend.Core.DTOs
         public string Description { get; set; }
 
         public int Amount { get; set; }
-
-        public ShelterDto Shelter { get; set; }
-
-        public bool IsDeleted { get; set; } 
     }
 }

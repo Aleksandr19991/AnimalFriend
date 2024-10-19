@@ -21,12 +21,12 @@
     [Parameter]
     public int Id { get; set; }
 
-    private AnimalServise _animalServise;
+    private AnimalService _animalServise;
     private AnimalOutputModel _animal;
 
     public Animal()
     {
-        _animalServise = new AnimalServise();
+        _animalServise = new AnimalService();
     }
 
     protected override void OnInitialized()
