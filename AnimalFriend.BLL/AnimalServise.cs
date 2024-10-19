@@ -8,13 +8,13 @@ using AutoMapper;
 
 namespace AnimalFriend.BLL
 {
-    public class AnimalManager
+    public class AnimalServise
     {
         private AnimalRepository AnimalRepository { get; set; }
 
         private Mapper _mapper;
 
-        public AnimalManager()
+        public AnimalServise()
         {
             AnimalRepository = new AnimalRepository();
 
@@ -28,31 +28,31 @@ namespace AnimalFriend.BLL
 
         public int AddAnimal(AnimalInputModel animal)
         {
-            var AnimalDto = _mapper.Map<AnimalDto>(animal);
+            var animalDto = _mapper.Map<AnimalDto>(animal);
 
-            var AnimalId = AnimalRepository.AddAnimal(AnimalDto);
+            var animalId = AnimalRepository.AddAnimal(animalDto);
 
-            return AnimalId;
+            return animalId;
         }
 
         public AnimalOutputModel GetAnimalById(int AnimalId)
         {
-            var AnimalDto = AnimalRepository.GetAnimalById(AnimalId);
+            var animalDto = AnimalRepository.GetAnimalById(AnimalId);
 
-            var animal = _mapper.Map<AnimalOutputModel>(AnimalDto);
+            var animal = _mapper.Map<AnimalOutputModel>(animalDto);
 
             return animal;
         }
 
         public List<AnimalOutputModel> GetAllAnimals()
         {
-            var AnimalDtos = AnimalRepository.GetAllAnimals();
+            var animalDtos = AnimalRepository.GetAllAnimals();
 
             List<AnimalOutputModel> animals = new();
 
-            foreach (var AnimalDto in AnimalDtos)
+            foreach (var animalDto in animalDtos)
             {
-                AnimalOutputModel animal = _mapper.Map<AnimalOutputModel>(AnimalDto);
+                AnimalOutputModel animal = _mapper.Map<AnimalOutputModel>(animalDto);
 
                 animals.Add(animal);
             }
@@ -60,15 +60,15 @@ namespace AnimalFriend.BLL
             return animals;
         }
 
-        public List<AnimalOutputModel> GetAllAnimalsByShelterId(int ShelterId)
+        public List<AnimalOutputModel> GetAllAnimalsByShelterId(int shelterId)
         {
-            var AnimalDtos = AnimalRepository.GetAllAnimalsByShelterId(ShelterId);
+            var animalDtos = AnimalRepository.GetAllAnimalsByShelterId(shelterId);
 
             List<AnimalOutputModel> animals = new();
 
-            foreach (var AnimalDto in AnimalDtos)
+            foreach (var animalDto in animalDtos)
             {
-                AnimalOutputModel animal = _mapper.Map<AnimalOutputModel>(AnimalDto);
+                AnimalOutputModel animal = _mapper.Map<AnimalOutputModel>(animalDto);
 
                 animals.Add(animal);
             }
@@ -78,27 +78,27 @@ namespace AnimalFriend.BLL
 
         public int UpdateAnimal(AnimalInputModel animal)
         {
-            var AnimalDto = _mapper.Map<AnimalDto>(animal);
+            var animalDto = _mapper.Map<AnimalDto>(animal);
 
-            var AnimalId = AnimalRepository.UpdateAnimal(AnimalDto);
+            var animalId = AnimalRepository.UpdateAnimal(animalDto);
 
-            return AnimalId;
+            return animalId;
         }
 
-        public AnimalOutputModel GetTypeAnimalById(int AnimalId)
+        public AnimalOutputModel GetTypeAnimalById(int animalId)
         {
-            var AnimalTypeDto = AnimalRepository.GetTypeAnimalById(AnimalId);
+            var animalTypeDto = AnimalRepository.GetTypeAnimalById(animalId);
 
-            var animalType = _mapper.Map<AnimalOutputModel>(AnimalTypeDto);
+            var animalType = _mapper.Map<AnimalOutputModel>(animalTypeDto);
 
             return animalType;
         }
 
         public void RemoveAnimal(AnimalDto animal)
         {
-            var AnimalDto = _mapper.Map<AnimalDto>(animal);
+            var animalDto = _mapper.Map<AnimalDto>(animal);
 
-            AnimalRepository.RemoveAnimal(AnimalDto);
+            AnimalRepository.RemoveAnimal(animalDto);
         }
     }
 }

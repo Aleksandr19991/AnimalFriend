@@ -6,12 +6,12 @@ using AutoMapper;
 
 namespace AnimalFriend.BLL.Mappings
 {
-    public class AnimalMapperProfile:Profile
+    public class AnimalMapperProfile : Profile
     {
-        public AnimalMapperProfile() 
+        public AnimalMapperProfile()
         {
-            CreateMap <AnimalInputModel, AnimalDto>();
-            CreateMap <AnimalDto, AnimalOutputModel>();
+            CreateMap<AnimalInputModel, AnimalDto>();
+            CreateMap<AnimalDto, AnimalOutputModel>();
         }
     }
 }
