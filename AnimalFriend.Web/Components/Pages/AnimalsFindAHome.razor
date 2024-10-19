@@ -14,11 +14,11 @@
 @code {
     public List<AnimalOutputModel> _animals;
 
-    private AnimalServise _animalServise;
+    private AnimalService _animalServise;
 
     public AnimalsFindAHome()
     {
-        _animalServise = new AnimalServise();
+        _animalServise = new AnimalService();
         _animals = _animalServise.GetAllAnimals();
     }
 }

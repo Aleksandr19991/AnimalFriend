@@ -1,0 +1,19 @@
+﻿@page "/fundraising"
+@rendermode RenderMode.InteractiveServer
+
+<h3 class="color-h3">Fundraising</h3>
+
+@code {
+    
+    public List<FundraisingOutputModel> _fundraisings;
+
+    private FundraisingService _fundraisingServise;
+
+    public Fundraising()
+    {
+        _fundraisingServise = new FundraisingService();
+        _fundraisings = _fundraisingServise.GetAllFundraisings();
+    }
+}
+
+

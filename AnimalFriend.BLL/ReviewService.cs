@@ -7,13 +7,13 @@ using AutoMapper;
 
 namespace AnimalFriend.BLL
 {
-    public class ReviewServise
+    public class ReviewService
     {
         private ReviewRepository ReviewRepository { get; set; }
 
         private Mapper _mapper;
 
-        public ReviewServise()
+        public ReviewService()
         {
             ReviewRepository = new ReviewRepository();
 

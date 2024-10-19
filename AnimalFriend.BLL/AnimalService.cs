@@ -8,13 +8,13 @@ using AutoMapper;
 
 namespace AnimalFriend.BLL
 {
-    public class AnimalServise
+    public class AnimalService
     {
         private AnimalRepository AnimalRepository { get; set; }
 
         private Mapper _mapper;
 
-        public AnimalServise()
+        public AnimalService()
         {
             AnimalRepository = new AnimalRepository();
 
