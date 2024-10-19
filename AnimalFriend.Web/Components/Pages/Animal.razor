@@ -1,7 +1,7 @@
 ﻿@page "/animal/{Id:int}"
-@* @rendermode RenderMode.InteractiveServer *@
+@rendermode RenderMode.InteractiveServer
 
-@* <div class="card mb-3" style="max-width: 1000px;">
+<div class="card mb-3" style="max-width: 1000px;">
     <div class="row g-0">
         <div class="col-md-4">
             <img src="@_animal.ImagePath" class="img-fluid rounded-start" alt="@_animal.Name">
@@ -10,29 +10,27 @@
             <div class="card-body">
                 <h5 class="card-title">@_animal.Name</h5>
                 <p>@_animal.Description</p>
-                <p>@_animal.AnimalSpecies</p>
+                <p>@_animal.Type</p>
                 <p>@_animal.Age</p>
-                <p>@_animal.NameShelter</p>
-                <p>@_animal.CallShelter</p>
             </div>
         </div>
     </div>
-</div> *@
+</div>
 
 @code {
     [Parameter]
     public int Id { get; set; }
 
-    private AnimalManager _animalManager;
+    private AnimalServise _animalServise;
     private AnimalOutputModel _animal;
 
     public Animal()
     {
-        _animalManager = new AnimalManager();
+        _animalServise = new AnimalServise();
     }
-    
-    // protected override void OnInitialized()
-    // {
-    //     _animal = _animalManager.GeAnimalById(Id);
-    // }
+
+    protected override void OnInitialized()
+    {
+        _animal = _animalServise.GetAnimalById(Id);
+    }
 }
