@@ -10,6 +10,7 @@ a {
     position: fixed;
     width: 84%;
     z-index: 3;
+    border-bottom: 1rem solid red;
 }
 
 .smile-position {

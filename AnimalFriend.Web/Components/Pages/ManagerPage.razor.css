@@ -16,3 +16,9 @@ h3 {
 .castom-button {
     width: 20%;
 }
+
+.info {
+    color: red;
+    text-align: center;
+    font-size: 30px;
+}

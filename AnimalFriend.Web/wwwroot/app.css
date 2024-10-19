@@ -12,6 +12,7 @@ html, body {
     bottom: 0;
     width: 84%;
     height: 50px;
+    border-top: 3px solid black;
 }
 
 .footer-content-position {
