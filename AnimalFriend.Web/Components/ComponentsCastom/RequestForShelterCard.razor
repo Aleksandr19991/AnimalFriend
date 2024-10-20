@@ -1,0 +1,24 @@
+﻿<h3>RequestForShelterCard</h3>
+
+<div class="card" style="width: 18rem;">
+  @* <img src="..." class="card-img-top" alt="..."> *@
+  <div class="card-body">
+        <h5 class="card-title">@RequestAddShelter.Name</h5>
+        <p class="card-text">@RequestAddShelter.Description</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">@RequestAddShelter.Email</li>
+    <li class="list-group-item">@RequestAddShelter.Phone</li>
+    <li class="list-group-item">@RequestAddShelter.Address</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+
+@code {
+    [Parameter]
+    public RequestAddShelterOutputModel RequestAddShelter{ get; set; }
+
+}

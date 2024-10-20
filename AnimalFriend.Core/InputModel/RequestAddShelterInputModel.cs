@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AnimalFriend.Core.InputModel
 {
-    public class RequestCreateShelterInputModel
+    public class RequestAddShelterInputModel
     {
         public int Id { get; set; }
 

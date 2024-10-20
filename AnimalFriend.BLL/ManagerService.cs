@@ -25,7 +25,7 @@ namespace AnimalFriend.BLL
             _mapper = new Mapper(config);
         }
 
-        public void AddBidder(RequestCreateShelterInputModel bidder, int userId )
+        public void AddBidder(RequestAddShelterInputModel bidder, int userId )
         {
             var shelter = _mapper.Map<RequestToAddShelterDto>(bidder);
             ManagerRepository.AddBidder(shelter, userId);
