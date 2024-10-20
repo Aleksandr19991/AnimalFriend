@@ -1,4 +1,4 @@
-﻿namespace AnimalFriend.Core.InputModel
+namespace AnimalFriend.Core.InputModel
 {
     public class AnimalInputModel
     {
