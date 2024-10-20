@@ -7,19 +7,17 @@ namespace AnimalFriend.DAL
     {
         Context context = new Context();
 
-        public int AddAnimal(AnimalDto animal)
+        public void AddAnimal(AnimalDto animal)
         {
             context.Animals.Add(animal);
             context.SaveChanges();
-
-            return animal.Id;
         }
 
         public AnimalDto GetAnimalById(int AnimalId)
         {
-            var animal = context.Animals.Where(a => a.Id == AnimalId).FirstOrDefault();
+            var animalId = context.Animals.Where(a => a.Id == AnimalId).FirstOrDefault();
 
-            return animal;
+            return animalId;
         }
 
         public List<AnimalDto> GetAllAnimals()
@@ -34,11 +32,10 @@ namespace AnimalFriend.DAL
             return context.Animals.ToList();
         }
 
-        public int UpdateAnimal(AnimalDto animal)
+        public void UpdateAnimal(AnimalDto animal)
         {
             context.Animals.Update(animal);
             context.SaveChanges();
-            return animal.Id;
         }
 
         public AnimalTypeDto GetTypeAnimalById(int AnimalId)
