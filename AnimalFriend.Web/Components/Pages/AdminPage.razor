@@ -7,11 +7,30 @@
 <h3>Admin page</h3>
 
 <div class="container-main">
-    <button class="btn btn-primary castom-button">applications for shelter</button>
+    <button @onclick=ShowRequestShelter class="btn btn-primary castom-button">show requet for shelter</button>
     <button class="btn btn-primary castom-button">sign in</button>
     <button class="btn btn-primary castom-button">sign in</button>
 </div>
 
-@code {
+@if (_isShowRequestSheltor)
+{
+    @foreach (var shelter in RequestsAddShelter)
+    {
+        <RequestForShelterCard @RequestsAddShelter = "shelter" />
+    } 
+}
 
+
+@code {
+    private bool _isShowRequestSheltor { get; set; } = false;
+
+    private List<RequestAddShelterOutputModel> RequestsAddShelter { get; set; }
+
+    private AdminService AdminService { get; set; }
+
+    private void ShowRequestShelter()
+    {
+        _isShowRequestSheltor = true;
+        RequestsAddShelter = AdminService.GetRequestAddSheltor();
+    }
 }

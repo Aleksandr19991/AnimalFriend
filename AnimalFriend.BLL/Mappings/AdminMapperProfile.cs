@@ -3,13 +3,14 @@ using AnimalFriend.Core.InputModel;
 using AnimalFriend.Core.OutputModels;
 using AutoMapper;
 
+
 namespace AnimalFriend.BLL.Mappings
 {
-    public class ManagerMapperProfile: Profile
+    public class AdminMapperProfile: Profile
     {
-        public ManagerMapperProfile()
+        public AdminMapperProfile()
         {
-            CreateMap<RequestAddShelterInputModel, RequestToAddShelterDto>();
-        } 
+            CreateMap<RequestToAddShelterDto, RequestAddShelterOutputModel>();
+        }
     }
 }
