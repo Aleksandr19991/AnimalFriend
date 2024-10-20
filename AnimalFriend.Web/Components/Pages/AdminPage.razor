@@ -13,16 +13,21 @@
 </div>
 
 @if (_isShowRequestSheltor)
-{
-    @foreach (var shelter in RequestsAddShelter)
-    {
-        <RequestForShelterCard @RequestsAddShelter = "shelter" />
-    } 
+{    
+    <div class="container-card">
+        @foreach (var RequestAddShelter in RequestsAddShelter)
+        {
+            <RequestForShelterCard RequestAddShelter="RequestAddShelter" />
+        }
+    </div>
+   
 }
 
 
 @code {
     private bool _isShowRequestSheltor { get; set; } = false;
+
+    private bool _isOpen { get; set; } = false;
 
     private List<RequestAddShelterOutputModel> RequestsAddShelter { get; set; }
 
@@ -30,7 +35,18 @@
 
     private void ShowRequestShelter()
     {
-        _isShowRequestSheltor = true;
-        RequestsAddShelter = AdminService.GetRequestAddSheltor();
+        
+        if (!_isShowRequestSheltor)
+        {
+            _isShowRequestSheltor = true;
+            AdminService = new();
+            RequestsAddShelter = AdminService.GetRequestAddSheltor();
+            _isShowRequestSheltor = true;
+        }
+        else
+        {
+            _isShowRequestSheltor = false;
+        }
+
     }
 }

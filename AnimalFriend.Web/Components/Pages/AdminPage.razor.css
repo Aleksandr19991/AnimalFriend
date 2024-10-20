@@ -16,3 +16,11 @@ h3 {
 .castom-button{
     width: 20%;
 }
+
+.container-card {
+    margin-left: 2rem;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+}

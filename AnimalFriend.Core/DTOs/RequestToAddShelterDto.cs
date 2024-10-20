@@ -6,7 +6,7 @@ namespace AnimalFriend.Core.DTOs
     {
         public int Id { get; set; }
 
-        public UserDto? User { get; set; }
+        public UserDto? User { get; set; } = new();
 
         public string Name { get; set; }
 
@@ -23,6 +23,6 @@ namespace AnimalFriend.Core.DTOs
         public bool IsActive { get; set; } 
 
         public bool IsYes { get; set; }
-        public DateTime DateTimeRegister { get; set; }
+        public String DateTime { get; set; }
     }
 }

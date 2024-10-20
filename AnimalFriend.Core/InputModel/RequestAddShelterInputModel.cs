@@ -35,6 +35,6 @@ namespace AnimalFriend.Core.InputModel
 
         public bool IsYes { get; set; } = true;
 
-        public DateTime DateTimeRegister { get; set; } = DateTime.Now;
+        public string DateTime { get; set; } 
     }
 }

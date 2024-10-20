@@ -1,4 +1,4 @@
-﻿<h3>RequestForShelterCard</h3>
+﻿
 
 <div class="card" style="width: 18rem;">
   @* <img src="..." class="card-img-top" alt="..."> *@
@@ -12,12 +12,13 @@
     <li class="list-group-item">@RequestAddShelter.Address</li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+        <button class="btn btn-primary">registration</button>
+        <button class="btn btn-primary">no registratio</button>
   </div>
 </div>
 
 @code {
+
     [Parameter]
     public RequestAddShelterOutputModel RequestAddShelter{ get; set; }
 
