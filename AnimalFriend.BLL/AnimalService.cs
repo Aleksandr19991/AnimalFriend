@@ -26,13 +26,11 @@ namespace AnimalFriend.BLL
             _mapper = new Mapper(config);
         }
 
-        public int AddAnimal(AnimalInputModel animal)
+        public void AddAnimal(AnimalInputModel animal)
         {
             var animalDto = _mapper.Map<AnimalDto>(animal);
 
-            var animalId = AnimalRepository.AddAnimal(animalDto);
-
-            return animalId;
+            AnimalRepository.AddAnimal(animalDto); 
         }
 
         public AnimalOutputModel GetAnimalById(int AnimalId)
@@ -76,13 +74,11 @@ namespace AnimalFriend.BLL
             return animals;
         }
 
-        public int UpdateAnimal(AnimalInputModel animal)
+        public void UpdateAnimal(AnimalInputModel animal)
         {
             var animalDto = _mapper.Map<AnimalDto>(animal);
 
-            var animalId = AnimalRepository.UpdateAnimal(animalDto);
-
-            return animalId;
+            AnimalRepository.UpdateAnimal(animalDto);
         }
 
         public AnimalOutputModel GetTypeAnimalById(int animalId)
@@ -92,13 +88,6 @@ namespace AnimalFriend.BLL
             var animalType = _mapper.Map<AnimalOutputModel>(animalTypeDto);
 
             return animalType;
-        }
-
-        public void RemoveAnimal(AnimalDto animal)
-        {
-            var animalDto = _mapper.Map<AnimalDto>(animal);
-
-            AnimalRepository.RemoveAnimal(animalDto);
         }
     }
 }
