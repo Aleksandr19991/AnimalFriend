@@ -15,7 +15,7 @@ namespace AnimalFriend.BLL
 
         public UserService()
         {
-            UserRepository = new UserRepository();
+            UserRepository = new();
 
             var config = new MapperConfiguration(
             cfg =>

@@ -24,8 +24,6 @@ namespace AnimalFriend.DAL
 
         public DbSet<UserRoleDto> UserRoles { get; set; }
 
-        public DbSet<UserShelterDto> UserShelters { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("Connection"));

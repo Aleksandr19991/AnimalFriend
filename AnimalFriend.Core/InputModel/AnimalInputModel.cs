@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 ﻿namespace AnimalFriend.Core.InputModel
+=======
+﻿
+
+namespace AnimalFriend.Core.InputModel
+>>>>>>> CreateManagerAdminPage
 {
     public class AnimalInputModel
     {

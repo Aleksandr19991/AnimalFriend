@@ -1,4 +1,4 @@
-﻿using AnimalFriend.Core.DTOs;
+using AnimalFriend.Core.DTOs;
 using AnimalFriend.Core.InputModel;
 using AnimalFriend.Core.OutputModels;
 using AnimalFriend.DAL;
