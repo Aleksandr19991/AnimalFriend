@@ -28,6 +28,7 @@ namespace AnimalFriend.Core.OutputModels
         public bool IsActive { get; set; }
 
         public bool IsYes { get; set; }
-        public DateTime DateTimeRegister { get; set; }
+
+        public string DateTime { get; set; }
     }
 }

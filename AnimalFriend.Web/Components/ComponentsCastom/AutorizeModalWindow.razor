@@ -79,6 +79,7 @@
                 CastomHeader.IsRender = true;
                 await ClassNameChanged.InvokeAsync(ClassName);
                 navManager.NavigateTo("/login");
+                _isError = false;
             }
             else
             {
