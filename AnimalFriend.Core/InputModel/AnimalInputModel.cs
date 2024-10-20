@@ -14,7 +14,7 @@ namespace AnimalFriend.Core.InputModel
 
         public string? Type { get; set; }
 
-        public bool? IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; } = false;
     }
 }
 

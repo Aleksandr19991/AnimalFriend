@@ -1,7 +1,14 @@
 ﻿<h3>FundraisingCard</h3>
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Shelter Fundraising</h5>
+        <a href="@($"Fundraising")" class="btn btn-primary">Открыть</a>
+    </div>
+</div>
 
 @code {
     [Parameter]
     [EditorRequired]
-    public FundraisingOutputModel Animal { get; set; }
+    public FundraisingOutputModel Fundraising { get; set; }
 }
