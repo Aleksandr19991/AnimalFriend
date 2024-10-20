@@ -125,6 +125,7 @@
                 var authState = await State;
                 var userId = authState.User.Claims.Where(c => c.Type == "id").Select(c => c.Value).SingleOrDefault();
                 ManagerService = new();
+                Bidder.DateTime = DateTime.Now.ToString();
                 ManagerService.AddBidder(Bidder, Convert.ToInt32(userId));
                 _info = "Bider added";
                 _isShowBidder = false;
