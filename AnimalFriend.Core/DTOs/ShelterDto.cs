@@ -16,8 +16,6 @@ namespace AnimalFriend.Core.DTOs
 
         public bool IsDeleted { get; set; }
 
-        public ShelterDto? Shelter { get; set; }
-
         public AnimalTypeDto Type { get; set; }
     }
 }

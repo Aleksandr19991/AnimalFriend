@@ -22,6 +22,7 @@ namespace AnimalFriend.Core.DTOs
 
         public bool IsActive { get; set; } 
 
-        public bool IsYes { get; set; } 
+        public bool IsYes { get; set; }
+        public DateTime DateTimeRegister { get; set; }
     }
 }
