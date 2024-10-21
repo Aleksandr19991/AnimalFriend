@@ -3,6 +3,13 @@
 
 <h3 class="color-h3">Fundraising</h3>
 
+<div class="conteiner-for-fundraisings">
+    @foreach (var f in _fundraisings)
+    {
+        <FundraisingCard fundraisings="@f" />
+    }
+</div>
+
 @code {
     
     public List<FundraisingOutputModel> _fundraisings;

@@ -7,12 +7,10 @@ namespace AnimalFriend.DAL
     {
         Context context = new Context();
 
-        public int CreateFundraising(FundraisingDto fundraising)
+        public void CreateFundraising(FundraisingDto fundraising)
         {
             context.Fundraisings.Add(fundraising);
             context.SaveChanges();
-
-            return fundraising.Id;
         }
 
         public List<FundraisingDto> GetAllFundraisings()

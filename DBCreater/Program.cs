@@ -101,6 +101,36 @@ namespace DBCreater
             //type4.Type = "other";
             //context.AnimalTypes.Add(type4);
             //context.SaveChanges();
+
+            //var fundraising = new FundraisingDto();
+            //fundraising.Id = 1;
+            //fundraising.Name = "medicines";
+            //fundraising.Description = "medicines for animals";
+            //fundraising.Amount = 500000;
+            //fundraising.Shelter = context.Shelters.Where(s => s.Id == 4).FirstOrDefault();
+            //fundraising.IsDeleted = true;
+            //context.Fundraisings.Add(fundraising);
+            //context.SaveChanges();
+
+            //var fundraising = new FundraisingDto();
+            //fundraising.Id = 2;
+            //fundraising.Name = "animal filler";
+            //fundraising.Description = "filler";
+            //fundraising.Amount = 500000;
+            //fundraising.Shelter = context.Shelters.Where(s => s.Id == 4).FirstOrDefault();
+            //fundraising.IsDeleted = true;
+            //context.Fundraisings.Add(fundraising);
+            //context.SaveChanges();
+
+            //var fundraising = new FundraisingDto();
+            //fundraising.Id = 3;
+            //fundraising.Name = "collars, leashes, muzzles, carriers";
+            //fundraising.Description = "collars, leashes, muzzles, carriers for animals";
+            //fundraising.Amount = 500000;
+            //fundraising.Shelter = context.Shelters.Where(s => s.Id == 4).FirstOrDefault();
+            //fundraising.IsDeleted = true;
+            //context.Fundraisings.Add(fundraising);
+            //context.SaveChanges();
         }
     }
 }
