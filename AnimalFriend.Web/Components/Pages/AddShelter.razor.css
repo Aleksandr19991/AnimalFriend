@@ -1,0 +1,9 @@
+﻿.info {
+    position:absolute;
+    top: 400px;
+    left: 600px;
+    color: white;
+    background-color:blue;
+    text-align: center;
+    font-size: 40px;
+}

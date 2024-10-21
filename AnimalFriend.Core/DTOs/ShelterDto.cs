@@ -1,4 +1,3 @@
-﻿
 
 namespace AnimalFriend.Core.DTOs
 {
@@ -13,6 +12,8 @@ namespace AnimalFriend.Core.DTOs
         public string Address { get; set; }
 
         public string Phone { get; set; }
+        
+        public string Email { get; set; }
 
         public bool IsDeleted { get; set; }
 

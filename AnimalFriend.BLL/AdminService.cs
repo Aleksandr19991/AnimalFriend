@@ -32,16 +32,18 @@ namespace AnimalFriend.BLL
             var result = _mapper.Map<List<RequestAddShelterOutputModel>>(requests);
             return result;
         }
+        
+        public void AddShelter(RequestAddShelterOutputModel shelter,  int typeId, int userId)
+        {
+            var shelterDto = _mapper.Map<ShelterDto>(shelter);
+            AdminRepository.AddShelter(shelterDto, typeId, 1);
+        }
+
         //public UserRoleModel GetUserRole(int id)
         //{
         //    var role = UserRepository.GetUserRole(id);
         //    var result = _mapper.Map<UserRoleModel>(role);
         //    return result;
-        //}
-        //public void AddBidder(RequestAddShelterInputModel bidder, int userId)
-        //{
-        //    var shelter = _mapper.Map<RequestToAddShelterDto>(bidder);
-        //    ManagerRepository.AddBidder(shelter, userId);
         //}
     }
 }

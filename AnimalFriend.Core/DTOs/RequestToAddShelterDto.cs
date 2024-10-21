@@ -1,12 +1,11 @@
 ﻿
-
 namespace AnimalFriend.Core.DTOs
 {
     public class RequestToAddShelterDto
     {
         public int Id { get; set; }
 
-        public UserDto? User { get; set; } = new();
+        public UserDto User { get; set; } 
 
         public string Name { get; set; }
 
@@ -23,6 +22,7 @@ namespace AnimalFriend.Core.DTOs
         public bool IsActive { get; set; } 
 
         public bool IsYes { get; set; }
+
         public String DateTime { get; set; }
     }
 }

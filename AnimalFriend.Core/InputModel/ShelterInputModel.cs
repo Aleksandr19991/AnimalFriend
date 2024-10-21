@@ -1,9 +1,3 @@
-﻿using AnimalFriend.Core.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimalFriend.Core.InputModel
 {
@@ -15,6 +9,10 @@ namespace AnimalFriend.Core.InputModel
 
         public string Address { get; set; }
 
-        public string Phone { get; set; }       
+        public string Phone { get; set; }
+
+        public string Email { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
     }
 }

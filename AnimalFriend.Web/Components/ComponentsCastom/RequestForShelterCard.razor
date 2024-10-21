@@ -7,19 +7,26 @@
         <p class="card-text">@RequestAddShelter.Description</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">@RequestAddShelter.Email</li>
-    <li class="list-group-item">@RequestAddShelter.Phone</li>
-    <li class="list-group-item">@RequestAddShelter.Address</li>
+        <li class="list-group-item">@RequestAddShelter.Email</li>
+        <li class="list-group-item">@RequestAddShelter.Phone</li>
+        <li class="list-group-item">@RequestAddShelter.Address</li>
+        <li class="list-group-item">@RequestAddShelter.Type</li>
   </ul>
   <div class="card-body">
-        <button class="btn btn-primary">registration</button>
-        <button class="btn btn-primary">no registratio</button>
+        <button @onclick=AddShelter lass="btn btn-primary">add shelter</button>
+        <button class="btn btn-primary">delete request</button>
   </div>
 </div>
 
 @code {
-
     [Parameter]
     public RequestAddShelterOutputModel RequestAddShelter{ get; set; }
 
+    private void AddShelter()
+    {
+        Console.WriteLine($"tyte: {RequestAddShelter.Type}");
+        Console.WriteLine($"user id : {RequestAddShelter.UserId}");
+        AdminService service = new();
+        service.AddShelter(RequestAddShelter, RequestAddShelter.Type, RequestAddShelter.UserId);
+    }
 }

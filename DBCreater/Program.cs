@@ -37,29 +37,11 @@ namespace DBCreater
             //context.SaveChanges();
 
 
-            //var result = context.RequestsForAdd.ToList();
-            //foreach (var item in result)
-            //{
-            //    Console.WriteLine(item.Id);
-            //}
 
             //var authorize = context.Users.Where(s => s.Email == "admin@gmail.com").FirstOrDefault();
             //Console.WriteLine(authorize.Id);
             //var t = authorize.Role;
             //Console.WriteLine(t.Id);
-
-
-            //var user = context.Users.Where(s => s.Email == "admin@gmail.com").
-            //    Include(b => b.Role).FirstOrDefault();
-            //Console.WriteLine(user.Role.Id);
-
-            //var authorize = context.Users.Where(s => s.Email == "admin@gmail.com").FirstOrDefault();
-            //Console.WriteLine(authorize.Id);
-            //var a = authorize.Role;
-
-            //authorize.Role.Id = context.UserRoles.Where(s => s.Id == 3).FirstOrDefault().Id;
-            //context.SaveChanges();
-
 
 
 
@@ -91,6 +73,33 @@ namespace DBCreater
             //roleIdU.Id = 1;
             //roleIdU.Role = "user";
             //context.UserRoles.Add(roleIdU);
+            //context.SaveChanges();
+
+
+
+            //CREATE TYPE
+            //var type1 = new AnimalTypeDto();
+            //type1.Id = 1;
+            //type1.Type = "cat";
+            //context.AnimalTypes.Add(type1);
+            //context.SaveChanges();
+
+            //var type2 = new AnimalTypeDto();
+            //type2.Id = 2;
+            //type2.Type = "dog";
+            //context.AnimalTypes.Add(type2);
+            //context.SaveChanges();
+
+            //var type3 = new AnimalTypeDto();
+            //type3.Id = 3;
+            //type3.Type = "all animals";
+            //context.AnimalTypes.Add(type3);
+            //context.SaveChanges();
+
+            //var type4 = new AnimalTypeDto();
+            //type4.Id = 4;
+            //type4.Type = "other";
+            //context.AnimalTypes.Add(type4);
             //context.SaveChanges();
         }
     }
