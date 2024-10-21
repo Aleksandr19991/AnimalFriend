@@ -3,6 +3,8 @@ using AnimalFriend.Core.InputModel;
 using AnimalFriend.Core.OutputModels;
 using AnimalFriend.DAL;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.Net.WebSockets;
 
 namespace DBCreater
 {
@@ -12,6 +14,27 @@ namespace DBCreater
         {
             Context context = new Context();
             //context.Database.EnsureCreated();
+
+            //var result = context.RequestsForAdd.ToList();
+
+            //CREATE USER ROLE
+            //var roleIdA = new UserRoleDto();
+            //roleIdA.Id = 3;
+            //roleIdA.Role = "admin";
+            //context.UserRoles.Add(roleIdA);
+            //context.SaveChanges();
+
+            //var roleIdM = new UserRoleDto();
+            //roleIdM.Id = 2;
+            //roleIdM.Role = "manager";
+            //context.UserRoles.Add(roleIdM);
+            //context.SaveChanges();
+
+            //var roleIdU = new UserRoleDto();
+            //roleIdU.Id = 1;
+            //roleIdU.Role = "user";
+            //context.UserRoles.Add(roleIdU);
+            //context.SaveChanges();
 
 
 

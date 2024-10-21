@@ -2,8 +2,6 @@ namespace AnimalFriend.Core.InputModel
 {
     public class AnimalInputModel
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public int? Age { get; set; }
@@ -14,7 +12,7 @@ namespace AnimalFriend.Core.InputModel
 
         public string? Type { get; set; }
 
-        public bool? IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; } = false;
     }
 }
 
