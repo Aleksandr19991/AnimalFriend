@@ -23,7 +23,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\ComponentsCastom\FormAddRequestShelter.razor" />
     <_ContentIncludedByDefault Remove="Components\Pages\AdminPage.razor" />
+    <_ContentIncludedByDefault Remove="Components\Pages\RequestAddShelterPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Pages\RequestAddShelterPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\ComponentsCastom\FormAddRequestShelter.razor" />
   </ItemGroup>
 
 </Project>

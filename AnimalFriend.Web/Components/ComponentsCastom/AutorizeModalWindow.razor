@@ -48,13 +48,14 @@
 
     public EditContext editContext;
 
-    public AutorizeModalWindow()
-    {
-        Authorize = new();
-    }
+    // public AutorizeModalWindow()
+    // {
+    //     Authorize = new();
+    // }
 
     protected override void OnInitialized()
     {
+        Authorize = new();
         editContext = new(Authorize);
     }
 

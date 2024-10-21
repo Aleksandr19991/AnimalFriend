@@ -1,6 +1,6 @@
 ﻿@inject NavigationManager navManager
 
-<EditForm EditContext="editContext" OnValidSubmit="SignUp" FormName="Registration" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<EditForm EditContext="editContext" OnValidSubmit="SignUp" FormName="Registration" class="@ClassName" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             
@@ -31,7 +31,7 @@
                 <button @onclick=CloseModalSingIn type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Send</button>
             </div>
-            @if (_isError)
+            @if(_isError)
             {
                 <div style="color: red; padding: 5px 15px">@Message</div>
             }
@@ -41,10 +41,10 @@
 
 @code
 {
-    private bool _isError { get; set; } = false;
+    private bool _isError { get; set; } 
 
     [SupplyParameterFromForm]
-    private RegistrationInputModel Registration { get; set; } = new();
+    private RegistrationInputModel Registration { get; set; } 
 
     [Parameter]
     public string ClassName { get; set; } = "modal fade";
@@ -56,9 +56,11 @@
 
     private string Message { get; set; } = "";
 
-    public RegistrationModalWindow()
+    protected override void OnInitialized()
     {
+        Registration = new();
         editContext = new(Registration);
+        _isError = false;
     }
 
     private async Task CloseModalSingIn()
@@ -96,7 +98,6 @@
             }
             else
             {
-
                 Message = "email alredy exists";
                 _isError = true;
             }       
