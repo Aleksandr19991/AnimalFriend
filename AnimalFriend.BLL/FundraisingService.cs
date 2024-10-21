@@ -25,13 +25,11 @@ namespace AnimalFriend.BLL
             _mapper = new Mapper(config);
         }
 
-        public int CreateFundraising(FundraisingInputModel fundraising)
+        public void CreateFundraising(FundraisingInputModel fundraising)
         {
             var fundraisingDto = _mapper.Map<FundraisingDto>(fundraising);
 
-            var fundraisingId = FundraisingRepository.CreateFundraising(fundraisingDto);
-
-            return fundraisingId;
+            FundraisingRepository.CreateFundraising(fundraisingDto);
         }
 
         public int UpdateFundraising(FundraisingInputModel fundraising)
