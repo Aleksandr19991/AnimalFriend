@@ -38,7 +38,7 @@ namespace DBCreater
 
 
 
-            //var authorize = context.Users.Where(s => s.Email == "admin@gmail.com").FirstOrDefault();
+            //var authorize = context.Users.Where(s => s.Email == "@Pochta").FirstOrDefault();
             //Console.WriteLine(authorize.Id);
             //var t = authorize.Role;
             //Console.WriteLine(t.Id);
@@ -49,7 +49,7 @@ namespace DBCreater
             //UserRoleDto role = new();
             //role.Id = 3;
             //role.Role = "admin";
-            //var authorize = context.Users.Where(s => s.Email == "admin@gmail.com").FirstOrDefault();
+            //var authorize = context.Users.Where(s => s.Email == "@Pochta").FirstOrDefault();
             //Console.WriteLine(authorize.Email);
             //authorize.Role = role;
             //context.SaveChanges();

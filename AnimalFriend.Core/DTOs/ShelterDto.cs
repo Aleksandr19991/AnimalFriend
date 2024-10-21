@@ -19,6 +19,6 @@ namespace AnimalFriend.Core.DTOs
 
         public AnimalTypeDto Type { get; set; }
 
-        public List<AnimalDto> Animals { get; set; }
+        public List<AnimalDto>? Animals { get; set; }
     }
 }

@@ -36,7 +36,7 @@ namespace AnimalFriend.BLL
         public void AddShelter(RequestAddShelterOutputModel shelter,  int typeId, int userId)
         {
             var shelterDto = _mapper.Map<ShelterDto>(shelter);
-            AdminRepository.AddShelter(shelterDto, typeId, 1);
+            AdminRepository.AddShelter(shelterDto, typeId, userId);
         }
 
         //public UserRoleModel GetUserRole(int id)
