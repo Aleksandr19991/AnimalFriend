@@ -1,0 +1,163 @@
+﻿@page "/add-shelter"
+
+@inject NavigationManager navManager
+
+<PageTitle>Add shelter</PageTitle>
+
+
+
+@* <AuthorizeView Context="Context">
+    <Authorized> *@
+        <EditForm EditContext="editContext" OnValidSubmit="CreateBidder" FormName="Bidder" class="" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <AntiforgeryToken />
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Authorize window</h5>
+                        <a href="/" class="btn btn-primary">Close</a>
+                    </div>
+                    <div class="modal-body">
+                        <DataAnnotationsValidator />
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Name:</label>
+                            <InputText @bind-Value="Bidder.Name" class="form-control" id="recipient-name" />
+                            <ValidationMessage For="@(() => Bidder.Name)" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-phone" class="col-form-label">Phone:</label>
+                            <InputText @bind-Value="Bidder.Phone" class="form-control" id="recipient-phone" />
+                            <ValidationMessage For="@(() => Bidder.Phone)" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-email" class="col-form-label">Email:</label>
+                            <InputText @bind-Value="Bidder.Email" class="form-control" id="recipient-email" />
+                            <ValidationMessage For="@(() => Bidder.Email)" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-address" class="col-form-label">Address:</label>
+                            <InputText @bind-Value="Bidder.Address" class="form-control" id="recipient-address" />
+                            <ValidationMessage For="@(() => Bidder.Address)" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-description" class="col-form-label">Description:</label>
+                            <InputTextArea @bind-Value="Bidder.Description" class="form-control" id="recipient-description" />
+                            <ValidationMessage For="@(() => Bidder.Description)" />
+                        </div>
+
+                        <InputRadioGroup @bind-Value="Bidder.Type">
+                            @foreach (var type in Types)
+                            {
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <InputRadio Value="@type.TypeId" class="form-check-input" />
+                                        @type.Type
+                                    </label>
+                                </div>
+                            }
+                        </InputRadioGroup>
+                        <ValidationMessage For="@(() => Bidder.Type)" />
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/" class="btn btn-primary">Close</a>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                    @if (_isError)
+                    {
+                        <div style="color: red; padding: 5px 15px">@_message</div>
+                    }
+                </div>
+            </div>
+        </EditForm>
+  @*   </Authorized>
+    <NotAuthorized>
+        <div class="info">
+            <p>Here page only auth user</p>
+            <a href="/" class="btn btn-primary">Close</a>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+ *@
+@if (_isGood)
+{
+    <p class="info">@_info</p>
+}
+
+@code {
+    private string _info { get; set; } = "";
+
+    private bool _isError { get; set; } = false;
+
+    private bool _isGood { get; set; } = false;
+
+    private RequestAddShelterInputModel Bidder { get; set; } = new();
+
+    public EditContext editContext;
+
+    private string _message { get; set; }
+
+    private ManagerService ManagerService { get; set; }
+
+    [CascadingParameter]
+    public Task<AuthenticationState> State { get; set; }
+
+    protected override void OnInitialized()
+    {
+        editContext = new(Bidder);
+    }
+
+    private async void CreateBidder()
+    {
+        if (Bidder != null && Bidder.Type < 5 && Bidder.Type > 0)
+        {
+            try
+            {
+                var authState = await State;
+                var userId = authState.User.Claims.Where(c => c.Type == "id").Select(c => c.Value).SingleOrDefault();
+                Console.WriteLine(userId);
+                ManagerService = new();
+                Bidder.DateTime = DateTime.Now.ToString();
+                ManagerService.AddBidder(Bidder, Convert.ToInt32(userId));
+                _info = "request added";
+                _isGood = true;
+                TimerCallback tm = new TimerCallback (Timer);
+                Timer timer = new Timer(tm, null, 3000, 4000);
+            }
+            catch
+            {
+                _message = "error request";
+                _isError = true;
+            }
+        }
+        else
+        {
+            _message = "chenge type";
+            _isError = true;
+        }
+    }
+
+    private void Timer(object obj)
+    {
+        navManager.NavigateTo("./");
+    }
+
+    public class CheckBox
+    {
+        public int TypeId { get; set; }
+
+        public string Type { get; set; }
+    }
+
+    public List<CheckBox> Types { get; set; } = new List<CheckBox>()
+    {
+        new CheckBox() {TypeId = 1, Type = "cat"},
+        new CheckBox() {TypeId = 2, Type = "dog"},
+        new CheckBox() {TypeId = 3, Type = "all animall"},
+        new CheckBox() {TypeId = 4, Type = "other"},
+    };
+
+}   
+
+   
+
+

@@ -10,7 +10,11 @@ namespace AnimalFriend.BLL.Mappings
     {
         public AdminMapperProfile()
         {
-            CreateMap<RequestToAddShelterDto, RequestAddShelterOutputModel>();
+            CreateMap<RequestToAddShelterDto, RequestAddShelterOutputModel>().
+                ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.User.Id));
+            CreateMap<RequestAddShelterOutputModel, ShelterDto>().
+                ForMember(dest => dest.Type, src => src.Ignore());
+            //BeforeMap((src, dest) => dest.Type = new()).
         }
     }
 }

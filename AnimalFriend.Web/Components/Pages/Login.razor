@@ -11,6 +11,7 @@
 
     public async Task SignUp()
     {
+        Console.WriteLine(Id);
         var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Role, Role.ToString()),

@@ -124,6 +124,7 @@
             {
                 var authState = await State;
                 var userId = authState.User.Claims.Where(c => c.Type == "id").Select(c => c.Value).SingleOrDefault();
+                Console.WriteLine(userId);
                 ManagerService = new();
                 Bidder.DateTime = DateTime.Now.ToString();
                 ManagerService.AddBidder(Bidder, Convert.ToInt32(userId));
@@ -153,9 +154,9 @@
 
     public List<CheckBox> Types { get; set; } = new List<CheckBox>()
     {
-        new CheckBox() {TypeId = 1, Type = "dog"},
-        new CheckBox() {TypeId = 2, Type = "cat"},
-        new CheckBox() {TypeId = 3, Type = "all animall"},
+        new CheckBox() {TypeId = 1, Type = "cat"},
+        new CheckBox() {TypeId = 2, Type = "dog"},
+        new CheckBox() {TypeId = 3, Type = "all animals"},
         new CheckBox() {TypeId = 4, Type = "other"},
     };
 }

@@ -1,5 +1,4 @@
 ﻿
-
 namespace AnimalFriend.Core.DTOs
 {
     public class ShelterDto
@@ -13,9 +12,11 @@ namespace AnimalFriend.Core.DTOs
         public string Address { get; set; }
 
         public string Phone { get; set; }
+        
+        public string Email { get; set; }
 
         public bool IsDeleted { get; set; }
 
-        public AnimalTypeDto Type { get; set; }
+        public AnimalTypeDto? Type { get; set; } 
     }
 }
