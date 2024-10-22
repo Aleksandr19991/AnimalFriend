@@ -12,33 +12,29 @@
     <button class="btn btn-primary castom-button">sign in</button>
 </div>
 
-<p class="info">@_info</p>
+@* <p class="info">@_info</p> *@
 
-@* @if (_isShowBidder)
+@if (_isShowBidder)
 {
-    <RequestAddShelterPage />
+    <FormAddAnimal OnClickCallback="CloseWindow" />
 }
- *@
+
 @code {
     private string _info { get; set; } = "";
     //private bool _isError { get; set; } = false;
-
-    //private RequestAddShelterInputModel Bidder { get; set; } 
-
-    //public EditContext editContext;
 
     private bool _isShowBidder { get; set; } = false;
 
     //private string _message { get; set; }
 
-    //private ManagerService ManagerService { get; set; }
-
-    //[CascadingParameter]
-    //public Task<AuthenticationState> State { get; set; }
-
     private void AddAnimal()
     {
         _isShowBidder = true;
+    }
+
+    private void CloseWindow()
+    {
+        _isShowBidder = false;
     }
 }
    

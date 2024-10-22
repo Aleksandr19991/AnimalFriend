@@ -1,0 +1,110 @@
+﻿<EditForm EditContext="editContext" OnValidSubmit="CreateBidder" FormName="add-animal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <DataAnnotationsValidator />
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add animal</h5>
+                <button @onclick="OnClickCallback" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <DataAnnotationsValidator />
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Name:</label>
+                    <InputText @bind-Value="Animal.Name" class="form-control" id="recipient-name" />
+                    <ValidationMessage For="@(() => Animal.Name)" />
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-phone" class="col-form-label">Age:</label>
+                    <InputNumber @bind-Value="Animal.Age" class="form-control" id="recipient-phone" />
+                    
+                </div>               
+                <div class="mb-3">
+                    <label for="recipient-photopath" class="col-form-label">Photo path:</label>
+                    <InputText @bind-Value="Animal.ImagePath" class="form-control" id="recipient-photopath" />
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-description" class="col-form-label">Description:</label>
+                    <InputTextArea @bind-Value="Animal.Description" class="form-control" id="recipient-description" />
+                </div>
+                <InputRadioGroup @bind-Value="Animal.TypeId">
+                    @foreach (var type in Types)
+                    {
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <InputRadio Value="@type.TypeId" class="form-check-input" />
+                                @type.Type
+                            </label>
+                        </div>
+                    }
+                </InputRadioGroup>
+            </div>
+            <div class="modal-footer">
+                <button @onclick="OnClickCallback" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+            @if (_isError)
+            {
+                <div style="color: red; padding: 5px 15px">@_message</div>
+            }
+        </div>
+    </div>
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClickCallback { get; set; }
+
+    private bool _isError { get; set; }
+
+    private string _message { get; set; }
+
+    private AnimalInputModel Animal { get; set; }
+
+    private AnimalService AnimalService { get; set; }
+
+    public EditContext editContext;
+
+    protected override void OnInitialized()
+    {
+        Animal = new();
+        editContext = new(Animal);
+    }
+       
+    private async void CreateBidder()
+    {
+        if (Animal != null && Animal.TypeId < 5 && Animal.TypeId > 0)
+        {
+            try
+            {
+                AnimalService = new();
+                AnimalService.AddAnimal(Animal);
+                
+            }
+            catch
+            {
+                _message = "error request";
+                _isError = true;
+            }
+        }
+        else
+        {
+            _message = "chenge type";
+            _isError = true;
+        }
+    }
+    public class CheckBox
+    {
+        public int TypeId { get; set; }
+
+        public string Type { get; set; }
+    }
+
+    public List<CheckBox> Types { get; set; } = new List<CheckBox>()
+    {
+        new CheckBox() {TypeId = 1, Type = "cat"},
+        new CheckBox() {TypeId = 2, Type = "dog"},
+        new CheckBox() {TypeId = 3, Type = "all animals"},
+        new CheckBox() {TypeId = 4, Type = "other"},
+    };
+}
