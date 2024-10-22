@@ -1,14 +1,15 @@
-﻿<h3>FundraisingCard</h3>
+﻿
 <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Shelter Fundraising</h5>
-        <a href="@($"Fundraising")" class="btn btn-primary">Открыть</a>
-    </div>
+  <img src="images/fundraisinfFoto.jpg" class="card-img-top" alt="...">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">@Fundraisings.Name</li>
+        <li class="list-group-item">@Fundraisings.Description</li>
+        <li class="list-group-item">@Fundraisings.Amount</li>
+    </ul>
 </div>
 
 @code {
     [Parameter]
     [EditorRequired]
-    public FundraisingOutputModel Fundraising { get; set; }
+    public FundraisingOutputModel Fundraisings { get; set; }
 }

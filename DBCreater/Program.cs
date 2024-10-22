@@ -38,7 +38,7 @@ namespace DBCreater
 
 
 
-            //var authorize = context.Users.Where(s => s.Email == "admin@gmail.com").FirstOrDefault();
+            //var authorize = context.Users.Where(s => s.Email == "@Pochta").FirstOrDefault();
             //Console.WriteLine(authorize.Id);
             //var t = authorize.Role;
             //Console.WriteLine(t.Id);
@@ -49,7 +49,7 @@ namespace DBCreater
             //UserRoleDto role = new();
             //role.Id = 3;
             //role.Role = "admin";
-            //var authorize = context.Users.Where(s => s.Email == "admin@gmail.com").FirstOrDefault();
+            //var authorize = context.Users.Where(s => s.Email == "@Pochta").FirstOrDefault();
             //Console.WriteLine(authorize.Email);
             //authorize.Role = role;
             //context.SaveChanges();
@@ -78,6 +78,36 @@ namespace DBCreater
             //type4.Id = 4;
             //type4.Type = "other";
             //context.AnimalTypes.Add(type4);
+            //context.SaveChanges();
+
+            //var fundraising = new FundraisingDto();
+            //fundraising.Id = 1;
+            //fundraising.Name = "medicines";
+            //fundraising.Description = "medicines for animals";
+            //fundraising.Amount = 500000;
+            //fundraising.Shelter = context.Shelters.Where(s => s.Id == 4).FirstOrDefault();
+            //fundraising.IsDeleted = true;
+            //context.Fundraisings.Add(fundraising);
+            //context.SaveChanges();
+
+            //var fundraising = new FundraisingDto();
+            //fundraising.Id = 2;
+            //fundraising.Name = "animal filler";
+            //fundraising.Description = "filler";
+            //fundraising.Amount = 500000;
+            //fundraising.Shelter = context.Shelters.Where(s => s.Id == 4).FirstOrDefault();
+            //fundraising.IsDeleted = true;
+            //context.Fundraisings.Add(fundraising);
+            //context.SaveChanges();
+
+            //var fundraising = new FundraisingDto();
+            //fundraising.Id = 3;
+            //fundraising.Name = "collars, leashes, muzzles, carriers";
+            //fundraising.Description = "collars, leashes, muzzles, carriers for animals";
+            //fundraising.Amount = 500000;
+            //fundraising.Shelter = context.Shelters.Where(s => s.Id == 4).FirstOrDefault();
+            //fundraising.IsDeleted = true;
+            //context.Fundraisings.Add(fundraising);
             //context.SaveChanges();
         }
     }
