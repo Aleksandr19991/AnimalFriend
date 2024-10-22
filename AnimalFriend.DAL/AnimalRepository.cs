@@ -7,16 +7,18 @@ namespace AnimalFriend.DAL
     {
         Context context = new Context();
 
-        public void AddAnimal(AnimalDto animal)
+        public void AddAnimal(AnimalDto animal, int userId, int typeId) //
         {
+            animal.Shelter = context.Users.Where(u => u.Id == userId).Select(c => c.Shelter).SingleOrDefault();
+            animal.Type = context.AnimalTypes.Where(u => u.Id == typeId).SingleOrDefault();
             context.Animals.Add(animal);
+
             context.SaveChanges();
         }
 
         public AnimalDto GetAnimalById(int AnimalId)
         {
             var animalId = context.Animals.Where(a => a.Id == AnimalId).FirstOrDefault();
-
             return animalId;
         }
 
@@ -28,7 +30,6 @@ namespace AnimalFriend.DAL
         public List<AnimalDto> GetAllAnimalsByShelterId(int ShelterId)
         {
             var animal = context.Animals.Include(a => a.Shelter).Where(s => s.Shelter.Id == ShelterId).FirstOrDefault();
-
             return context.Animals.ToList();
         }
 
@@ -41,7 +42,6 @@ namespace AnimalFriend.DAL
         public AnimalTypeDto GetTypeAnimalById(int AnimalId)
         {
             var animal = context.Animals.Include(a => a.Type).Where(a => a.Id == AnimalId).FirstOrDefault();
-
             return animal.Type;
         }
 

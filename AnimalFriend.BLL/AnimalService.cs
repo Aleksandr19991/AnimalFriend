@@ -26,11 +26,10 @@ namespace AnimalFriend.BLL
             _mapper = new Mapper(config);
         }
 
-        public void AddAnimal(AnimalInputModel animal)
+        public void AddAnimal(AnimalInputModel animal, int userId, int typeId)
         {
             var animalDto = _mapper.Map<AnimalDto>(animal);
-
-            AnimalRepository.AddAnimal(animalDto); 
+            AnimalRepository.AddAnimal(animalDto, userId, typeId); 
         }
 
         public AnimalOutputModel GetAnimalById(int AnimalId)
