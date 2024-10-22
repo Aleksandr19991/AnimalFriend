@@ -1,8 +1,8 @@
 ﻿<div class="card" style="width: 18rem;">
-    <img src="@Shelter.ImagePath" class="card-img-top" alt="@Shelter.NameShelter" width="200px" height="250px" >
+    @* <img src="@Shelter.ImagePath" class="card-img-top" alt="@Shelter.NameShelter" width="200px" height="250px" > *@
     <div class="card-body">
-        <h5 class="card-title">@Shelter.NameShelter</h5>
-        <p class="card-text">@Shelter.TypeAnimal</p>
+        <h5 class="card-title">@Shelter.Name</h5>
+        <p class="card-text">@Shelter.Type</p>
         <p class="card-text">@Shelter.Description</p>
         <a href="#" class="btn btn-primary">Go to</a>
     </div>
@@ -10,6 +10,5 @@
 
 @code {
     [Parameter]
-    
     public ShelterCardOutputModel Shelter { get; set; }
 }

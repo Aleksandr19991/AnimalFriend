@@ -1,6 +1,7 @@
 ﻿@inject NavigationManager navManager
 
 <EditForm EditContext="editContext" OnValidSubmit="SignUp" FormName="Registration" class="@ClassName" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <DataAnnotationsValidator />
     <div class="modal-dialog">
         <div class="modal-content">
             
@@ -19,6 +20,10 @@
                         <label for="recipient-email" class="col-form-label">Email:</label>
                         <InputText @bind-Value="Registration.Email" class="form-control" id="recipient-email" />
                         <ValidationMessage For="@(() => Registration.Email)" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-phone" class="col-form-label">Phone:</label>
+                        <InputText @bind-Value="Registration.Phone" class="form-control" id="recipient-phone" />
                     </div>
                     <div class="mb-3">
                         <label for="recipient-password" class="col-form-label">Password:</label>
@@ -56,7 +61,7 @@
 
     private string Message { get; set; } = "";
 
-    protected override void OnInitialized()
+    public RegistrationModalWindow()
     {
         Registration = new();
         editContext = new(Registration);
@@ -69,7 +74,7 @@
         await ClassNameChanged.InvokeAsync(ClassName);
     }
 
-    public async Task SignUp()
+    private async Task SignUp()
     {
         if (editContext != null && editContext.Validate())
         {
@@ -102,6 +107,5 @@
                 _isError = true;
             }       
         }      
-    }
-    
+    } 
 }

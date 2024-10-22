@@ -31,6 +31,8 @@ namespace AnimalFriend.Core.InputModel
         [Required(ErrorMessage = "enter Description")]
         public string Description { get; set; }
 
+        public string? PhotoPath { get; set; }
+
         public bool IsActive { get; set; } = true;
 
         public bool IsYes { get; set; } = true;

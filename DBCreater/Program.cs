@@ -55,28 +55,6 @@ namespace DBCreater
             //context.SaveChanges();
 
 
-
-            //CREATE USER ROLE
-            //var roleIdA = new UserRoleDto();
-            //roleIdA.Id = 3;
-            //roleIdA.Role = "admin";
-            //context.UserRoles.Add(roleIdA);
-            //context.SaveChanges();
-
-            //var roleIdM = new UserRoleDto();
-            //roleIdM.Id = 2;
-            //roleIdM.Role = "manager";
-            //context.UserRoles.Add(roleIdM);
-            //context.SaveChanges();
-
-            //var roleIdU = new UserRoleDto();
-            //roleIdU.Id = 1;
-            //roleIdU.Role = "user";
-            //context.UserRoles.Add(roleIdU);
-            //context.SaveChanges();
-
-
-
             //CREATE TYPE
             //var type1 = new AnimalTypeDto();
             //type1.Id = 1;

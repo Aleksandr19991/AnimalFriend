@@ -7,18 +7,18 @@
 <h3>Manager page</h3>
 
 <div class="container-main">
-    <button @onclick="OpenWindowBidder" class="btn btn-primary castom-button">application for registration</button>
+    <button @onclick="AddAnimal" class="btn btn-primary castom-button">application for registration</button>
     <button class="btn btn-primary castom-button">sign in</button>
     <button class="btn btn-primary castom-button">sign in</button>
 </div>
 
 <p class="info">@_info</p>
 
-@if (_isShowBidder)
+@* @if (_isShowBidder)
 {
     <RequestAddShelterPage />
 }
-
+ *@
 @code {
     private string _info { get; set; } = "";
     //private bool _isError { get; set; } = false;
@@ -36,7 +36,7 @@
     //[CascadingParameter]
     //public Task<AuthenticationState> State { get; set; }
 
-    private void OpenWindowBidder()
+    private void AddAnimal()
     {
         _isShowBidder = true;
     }

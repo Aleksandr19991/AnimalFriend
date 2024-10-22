@@ -11,14 +11,23 @@
 </div>
 
 @code {
-    
+
     public List<ShelterCardOutputModel> Shelters { get; set; }
 
     private ShelterService _shelterManager { get; set; }
 
     public AllShelters()
     {
-        _shelterManager = new ShelterService();
-        Shelters = _shelterManager.GetAllShelter();
+        //try
+        //{
+            _shelterManager = new ShelterService();
+            Shelters = _shelterManager.GetAllShelter();
+        //}
+        //catch
+        //{
+            //Shelters = new();
+        //}
+       
+        
     }
 }

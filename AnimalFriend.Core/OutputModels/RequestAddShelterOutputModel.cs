@@ -17,6 +17,8 @@ namespace AnimalFriend.Core.OutputModels
 
         public string Description { get; set; }
 
+        public string? PhotoPath { get; set; }
+
         public int UserId { get; set; }
 
         public String DateTime { get; set; }
