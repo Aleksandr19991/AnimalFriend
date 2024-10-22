@@ -24,8 +24,7 @@
 
     private void AddShelter()
     {
-        Console.WriteLine($"tyte: {RequestAddShelter.Type}");
-        Console.WriteLine($"user id : {RequestAddShelter.UserId}");
+        Console.WriteLine(RequestAddShelter.UserId);
         AdminService service = new();
         service.AddShelter(RequestAddShelter, RequestAddShelter.Type, RequestAddShelter.UserId);
     }

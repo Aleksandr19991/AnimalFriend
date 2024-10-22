@@ -30,17 +30,5 @@ namespace AnimalFriend.BLL
             var shelter = _mapper.Map<RequestToAddShelterDto>(bidder);
             ManagerRepository.AddBidder(shelter, userId);
         }
-        //public AuthorizationOutputModel GetInfoForAuthorise(string email)
-        //{
-        //    var info = UserRepository.GetInfoForAuthorise(email);
-        //    var result = _mapper.Map<AuthorizationOutputModel>(info);
-        //    return result;
-        //}
-        //public UserRoleModel GetUserRole(int id)
-        //{
-        //    var role = UserRepository.GetUserRole(id);
-        //    var result = _mapper.Map<UserRoleModel>(role);
-        //    return result;
-        //}
     }
 }
