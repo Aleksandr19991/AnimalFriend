@@ -65,27 +65,35 @@
 
     public EditContext editContext;
 
-    protected override void OnInitialized()
+    [CascadingParameter]
+    public Task<AuthenticationState> State { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
         Animal = new();
         editContext = new(Animal);
     }
-       
+
     private async void CreateBidder()
     {
         if (Animal != null && Animal.TypeId < 5 && Animal.TypeId > 0)
         {
-            try
-            {
+            //try
+            //{
+                var authState = await State;
+                var user = authState.User;
+                var userId = user.Claims.Where(c => c.Type == "id").
+                Select(c => c.Value).SingleOrDefault();
+   
                 AnimalService = new();
-                AnimalService.AddAnimal(Animal);
+                AnimalService.AddAnimal(Animal, Convert.ToInt32(userId), Animal.TypeId);
                 
-            }
-            catch
-            {
-                _message = "error request";
-                _isError = true;
-            }
+            //}
+            // catch
+            // {
+            //     _message = "error request";
+            //     _isError = true;
+            // }
         }
         else
         {
