@@ -34,8 +34,7 @@
     private AdminService AdminService { get; set; }
 
     private void ShowRequestShelter()
-    {
-        
+    {     
         if (!_isShowRequestSheltor)
         {
             AdminService = new();
@@ -46,6 +45,5 @@
         {
             _isShowRequestSheltor = false;
         }
-
     }
 }

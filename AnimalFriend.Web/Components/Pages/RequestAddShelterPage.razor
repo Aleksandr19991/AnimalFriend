@@ -1,0 +1,56 @@
+﻿@page "/request-add-shelter"
+
+@rendermode RenderMode.InteractiveServer
+@inject NavigationManager navManager
+
+    <PageTitle>Request add shelter</PageTitle>
+
+@if (IsRenderModal)
+{
+    <FormRequestShelter OnClickCallback="Back" />
+}
+else
+{
+    <div class="main-container">
+        <div class="no-avtorise">
+            <h3 class="style-h3">avalaible to authorized users</h3>
+            <a href="/" class="btn btn-primary">back</a>
+        </div>
+    </div>
+}
+<AuthorizeView>
+    <Authorized>
+        <h1 style="margin-left: 30px">Authorize</h1>
+    </Authorized>
+    <NotAuthorized>
+        <h1 style="margin-left: 30px">No authorize</h1>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+@code{
+    [CascadingParameter]
+    public Task<AuthenticationState> State { get; set; }
+
+    public static bool IsRenderModal { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await State;
+        var user = authState.User;
+
+        if (user.Identity is not null && user.Identity.IsAuthenticated)
+        {
+            IsRenderModal = true;
+        }
+        else
+        {
+            IsRenderModal = false;
+        }
+    }
+
+    private void Back(MouseEventArgs e)
+    {
+        navManager.NavigateTo("/");
+    }
+}

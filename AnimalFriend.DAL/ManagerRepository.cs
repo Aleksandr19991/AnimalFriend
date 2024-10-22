@@ -15,7 +15,7 @@ namespace AnimalFriend.DAL
 
         public UserDto GetUser(int userId)
         {
-            return context.Users.Where(s => s.Id == userId).FirstOrDefault();
+            return context.Users.Where(s => s.Id == userId).FirstOrDefault();//для сверху
         }
     }
 }

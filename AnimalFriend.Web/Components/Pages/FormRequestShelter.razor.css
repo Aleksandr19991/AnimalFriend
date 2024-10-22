@@ -1,0 +1,17 @@
+﻿.main-container {
+    display: flex;
+    margin-top: 10rem;
+    justify-content: center;
+}
+
+.no-avtorise {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.style-h3 {
+    color: white;
+    background-color: blue;
+    padding: 10px 20px;
+}

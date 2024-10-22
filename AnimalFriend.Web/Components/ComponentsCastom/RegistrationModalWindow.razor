@@ -1,6 +1,7 @@
 ﻿@inject NavigationManager navManager
 
-<EditForm EditContext="editContext" OnValidSubmit="SignUp" FormName="Registration" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<EditForm EditContext="editContext" OnValidSubmit="SignUp" FormName="Registration" class="@ClassName" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <DataAnnotationsValidator />
     <div class="modal-dialog">
         <div class="modal-content">
             
@@ -21,6 +22,10 @@
                         <ValidationMessage For="@(() => Registration.Email)" />
                     </div>
                     <div class="mb-3">
+                        <label for="recipient-phone" class="col-form-label">Phone:</label>
+                        <InputText @bind-Value="Registration.Phone" class="form-control" id="recipient-phone" />
+                    </div>
+                    <div class="mb-3">
                         <label for="recipient-password" class="col-form-label">Password:</label>
                         <InputText @bind-Value="Registration.Password" class="form-control" id="recipient-password" />
                         <ValidationMessage For="@(() => Registration.Password)" />
@@ -31,7 +36,7 @@
                 <button @onclick=CloseModalSingIn type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Send</button>
             </div>
-            @if (_isError)
+            @if(_isError)
             {
                 <div style="color: red; padding: 5px 15px">@Message</div>
             }
@@ -41,10 +46,10 @@
 
 @code
 {
-    private bool _isError { get; set; } = false;
+    private bool _isError { get; set; } 
 
     [SupplyParameterFromForm]
-    private RegistrationInputModel Registration { get; set; } = new();
+    private RegistrationInputModel Registration { get; set; } 
 
     [Parameter]
     public string ClassName { get; set; } = "modal fade";
@@ -58,7 +63,9 @@
 
     public RegistrationModalWindow()
     {
+        Registration = new();
         editContext = new(Registration);
+        _isError = false;
     }
 
     private async Task CloseModalSingIn()
@@ -67,7 +74,7 @@
         await ClassNameChanged.InvokeAsync(ClassName);
     }
 
-    public async Task SignUp()
+    private async Task SignUp()
     {
         if (editContext != null && editContext.Validate())
         {
@@ -96,11 +103,9 @@
             }
             else
             {
-
                 Message = "email alredy exists";
                 _isError = true;
             }       
         }      
-    }
-    
+    } 
 }

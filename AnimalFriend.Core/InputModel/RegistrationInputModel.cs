@@ -1,7 +1,5 @@
-﻿
-using System.ComponentModel.DataAnnotations;
-using AnimalFriend.Core.DTOs;
-using AnimalFriend.Core.OutputModels;
+﻿using System.ComponentModel.DataAnnotations;
+
 
 namespace AnimalFriend.Core.InputModel
 {
@@ -14,11 +12,14 @@ namespace AnimalFriend.Core.InputModel
         [Required(ErrorMessage = "enter Email")]
         [StringLength(20, MinimumLength = 6, ErrorMessage = "min char 6")]
         [RegularExpression(@"^\S*$", ErrorMessage = "without space")]
-        public string Email { get; set; }
 
+        public string Email { get; set; }
         [Required(ErrorMessage = "enter Password")]
         [StringLength(20, MinimumLength = 6, ErrorMessage = "min char 6")]
         [RegularExpression(@"^\S*$", ErrorMessage = "without space")]
+
+        public string Phone { get; set; }
+
         public string Password { get; set; }
     }
 }

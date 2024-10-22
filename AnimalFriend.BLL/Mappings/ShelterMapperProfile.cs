@@ -9,8 +9,8 @@ namespace AnimalFriend.BLL.Mappings
     {
         public ShelterMapperProfile() 
         {
-            CreateMap<ShelterInputModel, ShelterDto>();
-            CreateMap<ShelterDto, ShelterCardOutputModel>();
+            CreateMap<ShelterDto, ShelterCardOutputModel>().
+                ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type.Type));
         }
     }
 }

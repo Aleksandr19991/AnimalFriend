@@ -41,7 +41,6 @@ namespace AnimalFriend.Web
             }
 
             app.UseHttpsRedirection();
-
             app.UseStaticFiles();
             app.UseAntiforgery();
 

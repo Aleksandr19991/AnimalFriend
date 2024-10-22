@@ -1,6 +1,7 @@
 ﻿@inject NavigationManager navManager
 
 <EditForm EditContext="editContext" OnValidSubmit="Submit" FormName="Authorize" class="@ClassName" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <DataAnnotationsValidator />
     <div class="modal-dialog">
         <div class="modal-content">
             
@@ -51,10 +52,6 @@
     public AutorizeModalWindow()
     {
         Authorize = new();
-    }
-
-    protected override void OnInitialized()
-    {
         editContext = new(Authorize);
     }
 

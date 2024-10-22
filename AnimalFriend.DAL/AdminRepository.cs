@@ -17,8 +17,6 @@ namespace AnimalFriend.DAL
             shelter.Type = context.AnimalTypes.Where(n => n.Id == typeId).FirstOrDefault();
             context.Add(shelter);
             var User = context.Users.Where(n => n.Id == userId).FirstOrDefault();
-            Console.WriteLine(typeId);
-            Console.WriteLine(userId);
             User.Role = context.UserRoles.Where(n => n.Id == 2).FirstOrDefault();
             User.Shelter = shelter;
             context.SaveChanges();
